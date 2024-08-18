@@ -244,19 +244,16 @@ $rowsCount = $result->num_rows;
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
-                        <?php for ($i = 1; $i <= $totalPage; $i++) :
-                            if ($i == 1 || $i == $totalPage || ($i >= $page - 2 && $i <= $page + 2)) :
-                        ?>
+                        <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
+                            <?php if (($i >= $page - 1 && $i <= $page + 1)) : // 當前頁的前一頁和後一頁 
+                            ?>
                                 <li class="page-item <?php if ($i == $page) echo "active"; ?>">
 
                                     <a class="page-link" href="coupon-list.php?p=<?= $i ?>&order=<?= $order ?>&valid=<?= $valid ?>"><?= $i ?></a>
 
                                 </li>
-
-                        <?php
-                            endif;
-                        endfor;
-                        ?>
+                            <?php endif; ?>
+                        <?php endfor; ?>
                         <li class="page-item">
                             <a href="coupon-list.php?p=<?= $totalPage ?>&order=<?= $order ?>&valid=<?= $valid ?>" class="page-link">
                                 <span aria-hidden="true">&raquo;</span>

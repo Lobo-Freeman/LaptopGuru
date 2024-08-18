@@ -58,7 +58,7 @@ session_start();
             <div class="mb-3">
                 <label for="coupon_discount">折扣範圍</label>
                 <input type="text" class="form-control" name="coupon_discount">
-                <div id="quantifier">%</div>
+                <div class="text-end" id="quantifier">%</div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="coupon_start_time">開始時間</label>
