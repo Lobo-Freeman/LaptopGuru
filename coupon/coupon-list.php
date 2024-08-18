@@ -7,6 +7,10 @@ $per_page = 5;
 $page = 1;
 $start_item = 0;
 
+$now = date("Y-m-d H:i:s");
+$sqlTimeCheck = "UPDATE coupon SET valid = 0 WHERE coupon_end_time < '$now' AND valid = 1";
+$conn->query($sqlTimeCheck);
+
 
 
 $valid = $_GET["valid"];
@@ -19,6 +23,11 @@ switch ($valid) {
         $valid_clause = "valid=0";
         break;
 }
+
+$sqlAll = "SELECT *  FROM coupon WHERE $valid_clause";
+$resultAll = $conn->query($sqlAll);
+$rowsAll = $resultAll->fetch_all(MYSQLI_ASSOC);
+$rowsCountAll = $resultAll->num_rows;
 
 if (isset($_GET["search"])) {
     $type = $_GET["type"];
@@ -90,10 +99,7 @@ if (isset($_GET["search"])) {
     // 若沒有$_GET["p"]就只讀第一頁
 }
 
-$sqlAll = "SELECT *  FROM coupon WHERE $valid_clause";
-$resultAll = $conn->query($sqlAll);
-$rowsAll = $resultAll->fetch_all(MYSQLI_ASSOC);
-$rowsCountAll = $resultAll->num_rows;
+
 
 
 
