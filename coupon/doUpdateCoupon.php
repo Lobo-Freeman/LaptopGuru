@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if (!isset($_POST['coupon_id'])) {
+    header("Location: coupon-list.php");
+    exit;
+}
 require_once "db_connect.php";
 
 $coupon_id = $_POST['coupon_id'];
@@ -16,7 +20,6 @@ $sql = "UPDATE coupon SET coupon_code = '$coupon_code', coupon_content = '$coupo
 
 if ($conn->query($sql) === TRUE) {
     $_SESSION['update_message'] = "更新成功";
-    header("Location: coupon-list.php");
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 };

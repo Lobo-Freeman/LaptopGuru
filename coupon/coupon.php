@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "db_connect.php";
 
 if (!isset($_GET['id'])) {
@@ -8,7 +9,8 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-$sql = "SELECT * FROM coupon WHERE valid = 1 AND coupon_id = $id";
+
+$sql = "SELECT * FROM coupon WHERE coupon_id = $id";
 
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
@@ -45,6 +47,7 @@ str_replace('*', '', $row['coupon_discount']);
 
 <body>
     <div class="container">
+        <?php include "modal.php"; ?>
         <h1>優惠券</h1>
         <a href="coupon-list.php" class="btn btn-primary mb-3">
             <i class="fa-solid fa-arrow-rotate-left"></i>回到列表
@@ -91,13 +94,53 @@ str_replace('*', '', $row['coupon_discount']);
                         <?= $row['coupon_end_time'] ?>
                     </td>
                 </tr>
+                <tr>
+                    <th>狀態</th>
+                    <td>
+                        <?php if ($row['valid'] == 1): ?>
+                            有效
+                        <?php elseif ($row['valid'] == 0): ?>
+                            停用
+                        <?php endif; ?>
+                    </td>
+                </tr>
             </thead>
         </table>
-        <a href="couponEdit.php?id=<?= $row["coupon_id"] ?>" class="btn btn-primary">
-            <i class="fa-solid fa-pen"></i>
-            編輯
-        </a>
+        <div class="d-flex justify-content-between">
+            <a href="couponEdit.php?id=<?= $row["coupon_id"] ?>" class="btn btn-primary">
+                <i class="fa-solid fa-pen"></i>
+                編輯
+            </a>
+            <?php if ($row['valid'] == 1): ?>
+                <a href="doCouponDelete.php?id=<?= $row["coupon_id"] ?>" class="btn btn-danger">
+                    <i class="fa-solid fa-stop"></i>
+                    停用
+                </a>
+            <?php elseif ($row['valid'] == 0): ?>
+                <a href="doCouponRestart.php?id=<?= $row["coupon_id"] ?>" class="btn btn-primary">
+                    <i class="fa-solid fa-retweet"></i>
+                    啟用
+                </a>
+            <?php endif; ?>
+
+        </div>
     </div>
+
+
+    <?php include "js.php"; ?>
+    <script>
+        const infoModal = new bootstrap.Modal(document.getElementById('infoModal', {
+            keyboard: true
+        }));
+        const info = document.querySelector("#info");
+
+        if ("<?= $_SESSION['update_message'] ?>") {
+            // 上面的判斷是在判斷是否有訊息，如果有的話就顯示
+            info.textContent = "<?= $_SESSION['update_message'] ?>";
+            infoModal.show();
+            <?php unset($_SESSION['update_message']); ?>
+        }
+    </script>
 </body>
 
 </html>
