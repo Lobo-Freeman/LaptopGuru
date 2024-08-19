@@ -11,7 +11,7 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-$sql = "SELECT * FROM coupon WHERE valid = 1 AND coupon_id = $id";
+$sql = "SELECT * FROM coupon WHERE coupon_id = $id";
 
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
