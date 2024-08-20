@@ -71,9 +71,28 @@ str_replace('*', '', $row['coupon_discount']);
                         </td>
                     </tr>
                     <tr>
+                        <th>折扣種類</th>
+                        <td>
+                            <div id="discountMethod">
+                                <div class="form-check">
+                                    <input class="form-check-input" value="0" type="radio" name="discount_method" <?php if($row['discount_method']==0) echo "checked"?>>
+                                    <label class="form-check-label" value="0">
+                                        依售價百分比折扣
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" value="1" type="radio" name="discount_method" <?php if($row['discount_method']==1) echo "checked"?>>
+                                    <label class="form-check-label"  value="1">
+                                        依優惠金額折扣
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                    <tr>
                         <th>折扣範圍</th>
                         <td>
                             <input type="text" class="form-control" name="coupon_discount" value="<?= $row['coupon_discount'] ?>">
+                           
                         </td>
                     </tr>
                     <tr>
@@ -101,6 +120,7 @@ str_replace('*', '', $row['coupon_discount']);
 
     <?php include "js.php"; ?>
     <script>
+     
         const infoModal = new bootstrap.Modal(document.getElementById('infoModal', {
             keyboard: true
         }));
@@ -112,6 +132,8 @@ str_replace('*', '', $row['coupon_discount']);
             infoModal.show();
             <?php unset($_SESSION['update_message']); ?>
         }
+
+    
     </script>
 
 </body>
