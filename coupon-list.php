@@ -11,7 +11,7 @@ $now = date("Y-m-d H:i:s");
 $sqlTimeCheck = "UPDATE coupon SET valid = 0 WHERE coupon_end_time < '$now' AND valid = 1";
 $conn->query($sqlTimeCheck);
 
-
+if(isset($_GET['valid'])){
 
 $valid = $_GET["valid"];
 
@@ -22,6 +22,9 @@ switch ($valid) {
     case 0:
         $valid_clause = "valid=0";
         break;
+}
+}else{
+    $valid_clause = "valid=1";
 }
 
 $sqlAll = "SELECT *  FROM coupon WHERE $valid_clause";
@@ -51,7 +54,13 @@ if (isset($_GET["search"])) {
             break;
     }
 
-    $sql = "SELECT * FROM coupon WHERE $type_clause LIKE '%$search%' AND $valid_clause";
+    if (isset($_GET["valid"])) {
+        $sql = "SELECT * FROM coupon WHERE $type_clause LIKE '%$search%' AND $valid_clause";
+    } else {
+        $sql = "SELECT * FROM coupon WHERE $type_clause LIKE '%$search%'";
+    }
+
+    // $sql = "SELECT * FROM coupon WHERE $type_clause LIKE '%$search%' AND $valid_clause";
 
     // LIKE 模糊搜尋
     // % 代表任意字元
@@ -155,7 +164,7 @@ $rowsCount = $result->num_rows;
                         </select>
                     </div>
                     <input type="search" class="form-control" name="search" placeholder="搜尋優惠券" value="<?php echo isset($_GET["search"]) ? $_GET["search"] : ""; ?>">
-                    <input type="hidden" name="valid" value="<?php echo isset($_GET["valid"]) ? $_GET["valid"] : "1"; ?>">
+                    <!-- <input type="hidden" name="valid" value="<?php echo isset($_GET["valid"]) ? $_GET["valid"] : "1"; ?>"> -->
                     <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </form>
@@ -163,6 +172,9 @@ $rowsCount = $result->num_rows;
         <div class="py-2 d-flex justify-content-between">
             <?php if (isset($_GET["search"])) : ?>
                 <div class="btn-grup">
+                    <a class="btn btn-secondary <?php if(!isset($_GET['valid'])) echo 'active'?>" href="coupon-list.php?type=<?= $type ?>&search=<?= $search ?>">
+                    <i class="fa-solid fa-globe"></i>全部
+                    </a>
                     <a class="btn btn-success <?php if ($valid == 1) echo "active" ?>" href="coupon-list.php?type=<?= $type ?>&search=<?= $search ?>&valid=1">
                         <i class="fa-solid fa-check"></i>有效中
                     </a>
@@ -172,10 +184,10 @@ $rowsCount = $result->num_rows;
                 </div>
             <?php else: ?>
                 <div class="btn-group">
-                    <a class="btn btn-success <?php if ($valid == 1) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=1&valid=1">
+                    <a class="btn btn-success <?php if ($valid == 1) echo "active" ?>" href="coupon-list.php?p=1&order=1&valid=1">
                         <i class="fa-solid fa-check"></i>有效中
                     </a>
-                    <a class="btn btn-danger <?php if ($valid == 0) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=1&valid=0">
+                    <a class="btn btn-danger <?php if ($valid == 0) echo "active" ?>" href="coupon-list.php?p=1&order=1&valid=0">
                         <i class="fa-solid fa-xmark"></i>停用中
                     </a>
                 </div>

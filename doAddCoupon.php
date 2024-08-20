@@ -9,6 +9,12 @@ if (empty($_POST['coupon_code'])) {
     exit;
 }
 
+if(empty($_POST['discount_method'])){
+    $_SESSION['error'] = "請選擇折扣種類";
+    header("Location: coupon-add.php");
+    exit;
+}
+
 if (empty($_POST['coupon_discount'])) {
     $_SESSION['error'] = "請輸入折扣範圍";
     header("Location: coupon-add.php");

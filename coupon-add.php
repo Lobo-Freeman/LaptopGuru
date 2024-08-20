@@ -43,14 +43,14 @@ session_start();
             <div class="mb-3" id="discountMethod">
                 <label class="form-label" for="discount_method">折扣種類</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="discount_method" checked>
-                    <label class="form-check-label" value="0">
+                    <input class="form-check-input" value="0" type="radio" name="discount_method" checked>
+                    <label class="form-check-label" >
                         依售價百分比折扣
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="discount_method">
-                    <label class="form-check-label" value="1">
+                    <input class="form-check-input" value="1" type="radio" name="discount_method">
+                    <label class="form-check-label" >
                         依優惠金額折扣
                     </label>
                 </div>
