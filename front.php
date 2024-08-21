@@ -132,8 +132,8 @@
                 <div id="collapseArticle" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">文章管理:</h6>
-                        <a class="collapse-item" href="login.html">文章列表</a>
-                        <a class="collapse-item" href="register.html">新增文章</a>                                             
+                        <a class="collapse-item" href="article_manange.php">文章列表</a>
+                        <a class="collapse-item" href="article_add.php">新增文章</a>                                             
                     </div>
                 </div>
             </li>
