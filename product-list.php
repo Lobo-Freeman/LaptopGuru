@@ -198,7 +198,7 @@ $result = $conn->query($sql);
                             <td><?= $row["discrete_display_card"] ?></td>
                             <td><?= $row["product_display_card"] ?></td>
                             <td><a class="text-secondary" href="edit-product.php?id=<?= $row["product_id"] ?>"><i class="fa-solid fa-pencil"></i></a></td>
-                            <td><a class="text-secondary" data-delete_id="<?= $row["product_id"] ?>" class="delete_product"><i class="fa-solid fa-trash"></i></a></td>
+                            <td><a class="text-secondary delete_product" data-delete_id="<?= $row["product_id"] ?>" class="delete_product"><i class="fa-solid fa-trash"></i></a></td>
                         </tr>
                     <?php
                     }
