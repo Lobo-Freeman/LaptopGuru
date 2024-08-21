@@ -9,11 +9,7 @@ if (empty($_POST['coupon_code'])) {
     exit;
 }
 
-if(empty($_POST['discount_method'])){
-    $_SESSION['error'] = "請選擇折扣種類";
-    header("Location: coupon-add.php");
-    exit;
-}
+
 
 if (empty($_POST['coupon_discount'])) {
     $_SESSION['error'] = "請輸入折扣範圍";
@@ -45,7 +41,15 @@ if ($coupon_discount < 0) {
 $coupon_start_time = $_POST['coupon_start_time'];
 $coupon_end_time = $_POST['coupon_end_time'];
 
+$sqlAll = "SELECT * FROM coupon WHERE coupon_code = '$coupon_code'";
+$resultAll = $conn->query($sqlAll);
+$resultAllCount = $resultAll->num_rows;
 
+if($resultAllCount > 0){
+    $_SESSION['error'] = "優惠券代碼已存在";
+    header("Location: coupon-add.php");
+    exit;
+}
 
 
 $sql = "INSERT INTO coupon (coupon_code, coupon_content, discount_method, coupon_discount, coupon_start_time, coupon_end_time) VALUES ('$coupon_code', '$coupon_content', '$discount_method', '$coupon_discount', '$coupon_start_time', '$coupon_end_time')";
