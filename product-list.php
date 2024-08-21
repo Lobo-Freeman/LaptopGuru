@@ -125,7 +125,7 @@ $result = $conn->query($sql);
         <form>
             <div class="input-group">
                 <div>
-                    <select class="form-select" name="order">
+                    <select class="form-select" name="order" id="order_select">
                         <option value="0" <?= isset($_GET["order"]) && $_GET["order"] == 0 ? "selected" : ""; ?>>按id排序</option>
                         <option value="1" <?= isset($_GET["order"]) && $_GET["order"] == 1 ? "selected" : ""; ?>>按商品型號排序</option>
                         <option value="2" <?= isset($_GET["order"]) && $_GET["order"] == 2 ? "selected" : ""; ?>>按廠牌排序</option>
@@ -157,8 +157,8 @@ $result = $conn->query($sql);
         <?php $rows = $result->fetch_all(MYSQLI_ASSOC); ?>
         共有<?= $productCount ?> 筆商品
 
-        <table class="table table-bordered">
-            <thead>
+        <table class="table table-bordered ">
+            <thead class="text-nowrap">
                 <tr>
                     <th>商品id</th>
                     <th>商品圖片</th>
@@ -212,7 +212,7 @@ $result = $conn->query($sql);
                 ?>
 
         </table>
-        <ul class="pagination">
+        <ul class="pagination justify-content-center">
             <!-- 頁數 -->
             <?php
             if (isset($_GET["p"])) {
@@ -251,8 +251,17 @@ $result = $conn->query($sql);
     ?>
     
     <script>
-        // 刪除商品
+        
         var delete_id = document.querySelectorAll(".delete_product");
+        var order_select = document.querySelector("#order_select");
+        // 排序
+        order_select.addEventListener("change", function() {
+            var order = this.value;//取得選擇的值
+            var url = new URL(location.href);//取得當前網址
+            url.searchParams.set("order", order);//設定參數
+            location.href = url.href;//導向網址
+        });
+        // 刪除商品
         delete_id.forEach(function(item) {
             item.addEventListener("click", function() {
                 var delete_id = this.dataset.delete_id;
