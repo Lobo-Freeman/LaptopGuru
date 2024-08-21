@@ -1,7 +1,7 @@
 <?php
 
 require_once("db_connect.php");
-$account=$_POST["accout"];
+$account=$_POST["account"];
 
 if(!isset($_POST["name"])){
     echo "請循正常管道進入此頁";
