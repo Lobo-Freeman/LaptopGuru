@@ -14,5 +14,6 @@
         
         <link rel="stylesheet" href="css/sb-admin-2.css?time=<?php echo time(); ?>" />
         <link rel="stylesheet" href="css/sb-admin-2.min.css?time=<?php echo time(); ?>" />
+        <link rel="stylesheet" href="css/style.css?time=<?php echo time(); ?>">
         <!-- 將引入的css檔案加一個time()變數，避免瀏覽器暫存讓引入的css檔案無法更新 -->
         <!-- 當css撰寫完成後再把變數取消掉 -->

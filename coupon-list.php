@@ -146,7 +146,7 @@ $rowsCount = $result->num_rows;
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-main sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="front.php">
@@ -552,7 +552,7 @@ $rowsCount = $result->num_rows;
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-secondary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>
