@@ -6,7 +6,11 @@ if (!isset($_GET["id"])) {
 
 $id = $_GET["id"];
 
+<<<<<<< HEAD
 require_once("db_connect.php");
+=======
+require_once("topics/db_connect.php");
+>>>>>>> 132a92bac8cf6b90330f3c9f0ad44d15fcaeab20
 $sql = "SELECT id, images, model, brand, price, num, created_at FROM rental
 where id = '$id' and state='available'
 ";
