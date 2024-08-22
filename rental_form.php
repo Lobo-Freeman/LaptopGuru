@@ -148,7 +148,7 @@ if (isset($_GET["min"]) && isset($_GET["max"])) {
                         <div class="col-auto ms-2">
                             <input type="number" class="form-control text-end price-input" name="min"
                                 value="<?php $min = isset($_GET["min"]) ? $_GET["min"] : 0;
-                                echo $min ?>">
+                                        echo $min ?>">
                         </div>
                         <div class="col-auto ms-2">
                             ~
@@ -156,7 +156,7 @@ if (isset($_GET["min"]) && isset($_GET["max"])) {
                         <div class="col-auto ms-2">
                             <input type="number" class="form-control text-end price-input" name="max"
                                 value="<?php $max = isset($_GET["max"]) ? $_GET["max"] : 0;
-                                echo $max ?>">
+                                        echo $max ?>">
                         </div>
 
                         <button
@@ -235,9 +235,9 @@ if (isset($_GET["min"]) && isset($_GET["max"])) {
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            
+
             <?php if (isset($_GET["p"]) && !isset($_GET["min"]) && !isset($_GET["max"])): ?>
-                <div>
+                <!-- <div>
                     <ul class="pagination d-flex justify-content-center">
                         
                         <?php for ($i = 1; $i <= $total_page; $i++) : ?>
@@ -247,7 +247,54 @@ if (isset($_GET["min"]) && isset($_GET["max"])) {
                         <?php endfor; ?>
 
                     </ul>
+                </div> -->
+
+
+                <?php
+                // 控制顯示頁碼的範圍
+                $start_page = max(1, $page - 1);  // 當前頁碼的前一頁
+                $end_page = min($total_page, $page + 1);  // 當前頁碼的後一頁
+                ?>
+
+                <div>
+                    <ul class="pagination d-flex justify-content-center">
+
+                        <!-- 顯示第一頁 -->
+                        <?php if ($page > 2) : ?>
+                            <li class="page-item">
+                                <a class="page-link" href="rental_form.php?p=1&order=<?= $order ?>">1</a>
+                            </li>
+                            <?php if ($page > 3) : ?>
+                                <li class="page-item disabled">
+                                    <span class="page-link">...</span>
+                                </li>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+                        <!-- 動態顯示當前頁碼的前後頁 -->
+                        <?php for ($i = $start_page; $i <= $end_page; $i++) : ?>
+                            <li class="page-item <?php if ($page == $i) echo 'active'; ?>">
+                                <a class="page-link" href="rental_form.php?p=<?= $i ?>&order=<?= $order ?>"><?= $i ?></a>
+                            </li>
+                        <?php endfor; ?>
+
+                        <!-- 顯示最後一頁 -->
+                        <?php if ($page < $total_page - 1) : ?>
+                            <?php if ($page < $total_page - 2) : ?>
+                                <li class="page-item disabled">
+                                    <span class="page-link">...</span>
+                                </li>
+                            <?php endif; ?>
+                            <li class="page-item <?php if ($page == $total_page) echo 'active'; ?>">
+                                <a class="page-link" href="rental_form.php?p=<?= $total_page ?>&order=<?= $order ?>"><?= $total_page ?></a>
+                            </li>
+                        <?php endif; ?>
+
+                    </ul>
                 </div>
+
+
+
             <?php endif; ?>
         <?php else : ?>
             沒有找到符合條件的筆電

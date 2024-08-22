@@ -54,7 +54,7 @@ if ($laptopCounts > 0) {
 
             <!--action 表單提交時，數據應該發送到哪裡
                     表單提交時使用的 HTTP 方法。 GET(拿東西) 或 POST(傳東西)-->
-            <form action="laptop_update.php" method="post">
+            <form action="laptop_update.php" method="post" enctype="multipart/form-data">
 
                 <table class="table table-bordered">
                     <!--將筆電的 ID 值隨表單一同提交-->
@@ -87,7 +87,7 @@ if ($laptopCounts > 0) {
                         </td>
                     </tr>
 
-                    <?php if(isset($_GET)) ?>
+                    <?php if (isset($_GET)) ?>
                     <tr>
                         <td>價格</td>
                         <td>
@@ -113,12 +113,20 @@ if ($laptopCounts > 0) {
                     <tr>
                         <td>圖片</td>
                         <td>
-                            <img src="/topics/image/<?= $row['images'] ?>" alt="<?= $row['model'] ?>" width="100" >
-                            <!-- 這裡的 name 屬性必須設置，PHP 才能接收到檔案 -->
-                            <input type="hidden" name="original_images" value="/topics/image/<?= $row['images'] ?>">
-                            <input class="form-control" type="file" id="images" name="images" value="/topics/image/<?= $row['images'] ?>">
+                            <img src="/topics/image/<?= $row['images'] ?>" alt="<?= $row['model'] ?>" width="100">
+                            <input type="hidden" name="original_images" value="<?= $row['images'] ?>">
+                            <input class="form-control" type="file" id="images" name="images">
+
+                            <!-- 顯示當前圖片（如果存在） -->
+                            <?php if (!empty($row["images"])): ?>
+                                <img class="img-fluid mt-2" src="/topics/image/<?= $row['images'] ?>" alt="Current Event Picture" style="max-width: 200px;">
+                                <p class="mt-1">當前圖片: <?= $row['images'] ?></p>
+                            <?php endif; ?>
                         </td>
                     </tr>
+
+
+
                     <tr>
                         <td colspan="2">
                             <!-- 上傳按鈕 -->

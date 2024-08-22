@@ -7,31 +7,48 @@ if (!isset($_POST["model"])) {
 require_once("../topics/db_connect.php");
 
 $id = $_POST["id"];
-$images=$_POST["images"];
-$original_images=$_POST['original_images'];
+$original_images = $_POST["original_images"];
+$images=$_POST["images"]; //new
 $model = $_POST["model"];
 $brand = $_POST["brand"];
 $price = $_POST["price"];
-$created_at= date('Y-m-d H:i:s');
+$created_at = date('Y-m-d H:i:s');
 
-if(!isset($_POST["images"])){
-   $images = $original_images;
+// 檢查是否上傳新圖片
+if (isset($_FILES["images"]) && $_FILES["images"]["error"] == 0) {
+    $filename = $_FILES["images"]["name"];
+    $fileInfo = pathinfo($filename);
+    $extension = $fileInfo["extension"];
+    
+    // 生成唯一文件名
+    $newFileName = time() . ".$extension";
+    
+    // 確保上傳目錄存在
+    $uploadDir = $_SERVER['DOCUMENT_ROOT'] . "/topics/image/";
+    
+    // 移動上傳的文件到指定目錄
+    if (move_uploaded_file($_FILES["images"]["tmp_name"], $uploadDir . $newFileName)) {
+        $event_picture = $newFileName; // 新上傳的圖片
+        
+    } else {
+        echo "上傳照片失敗";
+        exit;
+    }
+} else {
+    // 沒有上傳新圖片，使用原本圖片
+    $event_picture = $original_images;
 }
 
-
-$sql = "UPDATE rental SET images='$images', model='$model', brand='$brand', price='$price' , created_at='$created_at'
-where id = '$id' 
-";
+// SQL 更新語句
+$sql = "UPDATE rental SET images='$event_picture', model='$model', brand='$brand', price='$price', created_at='$created_at' WHERE id='$id'";
 
 if ($conn->query($sql) === TRUE) {
     echo "更新成功";
-   } else {
+} else {
     echo "更新錯誤: " . $conn->error;
-   }
-   
+}
+
 header("location: laptop_edit.php?id=$id");
 
-?>
-<?php
 $conn->close();
 ?>
