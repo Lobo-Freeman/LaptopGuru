@@ -90,7 +90,8 @@ if (isset($_GET["product_id"])) {
                 <label for="product_hardisk_volume" class="form-label">硬碟容量</label>
                 <input type="text" class="form-control" id="product_hardisk_volume" value="<?php echo $row["product_hardisk_volume"]; ?>" name="product_hardisk_volume">
                 <label for="product_I/O" class="form-label">I/O埠</label>
-                <textarea type="text" class="form-control" id="product_I_O" required name="product_I_O"> 
+                <textarea type="text" class="form-control" id="product_I_O" required name="product_I_O" rows="5">
+                
                 <?php echo $row["product_I/O"]; ?></textarea>
                 <!-- <button type="button" class="btn btn-primary" onclick="updateProduct();">更新</button> -->
                 <button type="submit" class="btn btn-secondary">
