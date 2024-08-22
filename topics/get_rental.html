@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Rental Management</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        img {
+            width: 100px;
+            height: auto;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>租借清單</h1>
+    <div id="rental-list"></div>
+
+    <script>
+        // 使用 Fetch API 來從後端獲取數據
+        fetch('rental_connect.php')
+        .then(response => response.json())
+        .then(data => {
+            let table = `<table>
+                            <tr>
+                                <th>ID</th>
+                                <th>圖片</th>
+                                <th>型號</th>
+                                <th>品牌</th>
+                                <th>價格</th>
+                                <th>數量</th>
+                                <th>狀態</th>
+                                <th>租借者</th>
+                                <th>時間</th>
+                            </tr>`;
+            data.forEach(row => {
+                table += `<tr>
+                            <td>${row.id}</td>
+                            <td><img src="/topics/image/${row.images}" alt="${row.model}"></td>
+                            <td>${row.model}</td>
+                            <td>${row.brand}</td>
+                            <td>${row.price}</td>
+                            <td>${row.num}</td>
+                            <td>${row.state}</td>
+                            <td>${row.user_id}</td>
+                            <td>${row.created_at}</td>
+                          </tr>`;
+            });
+            table += `</table>`;
+            document.getElementById('rental-list').innerHTML = table;
+        })
+        .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
