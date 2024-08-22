@@ -1,13 +1,12 @@
 <?php
 
-require_once("db_connect.php");
+require_once("../topics/db_connect.php");
 
-$sql = "SELECT * FROM rental WHERE state='available' and price BETWEEN 500 and 2000";
+$sql = "SELECT * FROM rental WHERE model LIKE '%Vector%'";
 $result = $conn->query($sql);
 $laptopModel = $result->fetch_all(MYSQLI_ASSOC);
 
 var_dump($laptopModel);
-
 ?>
 
 

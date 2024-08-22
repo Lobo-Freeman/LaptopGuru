@@ -42,7 +42,7 @@ $row = $result->fetch_assoc();
         </div>
         <h1>活動資料</h1>
         <div class="row justify-content-center">
-            <div class="col-lg-4">
+            <div class="col">
                 <?php if ($eventCount > 0) : ?>
                     <table class="table table-bordered">
                         <tr>
@@ -67,7 +67,7 @@ $row = $result->fetch_assoc();
                             <td><?= $row["individual_or_team"] ?></td>
                         </tr><tr>
                             <th>活動照片</th>
-                            <td><img class="img-fluid" src="../event_images/<?= $row['event_picture'] ?>" alt=""></td>
+                            <td><img class="img-fluid" src="event_images/<?= $row['event_picture'] ?>" alt=""></td>
                         </tr><tr>
                             <th>報名開始時間</th>
                             <td><?= $row["apply_start_time"] ?></td>

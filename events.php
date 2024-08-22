@@ -1,5 +1,6 @@
 <?php
 require_once("db_connect.php");
+include("css.php");
 
 $sqlAll = "SELECT * FROM events WHERE valid = 1";
 $resultAll = $conn->query($sqlAll);
@@ -102,53 +103,54 @@ $eventCount = $result->num_rows;
         <?php endif; ?>
         <?php if ($eventCount > 0) : ?>
             共有<?= $eventCountAll ?>項活動
-                <table class="table table-bordered">
-                    <thead>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>活動名稱</th>
+                        <th>活動種類</th>
+                        <th>活動平台</th>
+                        <th>個人 <br> or <br> 團隊</th>
+                        <th>活動圖片</th>
+                        <th>報名<br>開始時間</th>
+                        <th>報名<br>結束時間</th>
+                        <th>活動<br>開始時間</th>
+                        <th>人數<br>上限</th>
+                        <th>備註</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while ($event = $result->fetch_assoc()) : ?>
                         <tr>
-                            <th>ID</th>
-                            <th>活動名稱</th>
-                            <th>活動種類</th>
-                            <th>活動平台</th>
-                            <th>個人 <br> or <br> 團隊</th>
-                            <th>活動照片</th>
-                            <th>報名<br>開始時間</th>
-                            <th>報名<br>結束時間</th>
-                            <th>活動<br>開始時間</th>
-                            <th>人數<br>上限</th>
-                            <th>備註</th>
+                            <td><?= $event["event_id"] ?></td>
+                            <td><?= $event["event_name"] ?></td>
+                            <td><?= $event["event_type"] ?></td>
+                            <td><?= $event["event_platform"] ?></td>
+                            <td><?= $event["individual_or_team"] ?></td>
+                            <td><img class="img-fluid" src="event_images/<?= $event["event_picture"] ?>" alt=""></td>
+                            <td><?= $event["apply_start_time"] ?></td>
+                            <td><?= $event["apply_end_time"] ?></td>
+                            <td><?= $event["event_start_time"] ?></td>
+                            <td><?= $event["maximum_people"] ?></td>
+                            <td>
+                                <a href="event.php?event_id=<?= $event["event_id"] ?>" class="btn btn-secondary d-block mb-2">
+                                    <i class="fa-solid fa-eye fa-fw"></i>
+                                </a>
+                                <a href="event_edit.php?event_id=<?= $event["event_id"] ?>" class="btn btn-secondary d-block">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <?php while ($event = $result->fetch_assoc()) : ?>
-                            <tr>
-                                <td><?= $event["event_id"] ?></td>
-                                <td><?= $event["event_name"] ?></td>
-                                <td><?= $event["event_type"] ?></td>
-                                <td><?= $event["event_platform"] ?></td>
-                                <td><?= $event["individual_or_team"] ?></td>
-                                <td><img class="img-fluid" src="../event_images/<?= $event["event_picture"] ?>" alt=""></td>
-                                <td><?= $event["apply_start_time"] ?></td>
-                                <td><?= $event["apply_end_time"] ?></td>
-                                <td><?= $event["event_start_time"] ?></td>
-                                <td><?= $event["maximum_people"] ?></td>
-                                <td>
-                                    <a href="event.php?event_id=<?= $event["event_id"] ?>" class="btn btn-secondary d-block mb-2">
-                                        <i class="fa-solid fa-eye fa-fw"></i>
-                                    </a>
-                                    <a href="event_edit.php?event_id=<?= $event["event_id"] ?>" class="btn btn-secondary d-block">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php endwhile; ?>
-                    </tbody>
-                </table>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
             <?php if (!isset($_GET["search"])) : ?>
                 <nav aria-label="Page navigation example">
+
                     <ul class="pagination justify-content-end">
                         <li class="page-item <?php if ($page <= 1) echo 'disabled'; ?>">
                             <a class="page-link" href="?p=<?php echo max(1, $page - 1); ?>&order=<?php echo htmlspecialchars($order); ?>" aria-label="Previous">
-                                <i class="fa-solid fa-angle-left"></i>
+                                <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
                         <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
@@ -156,9 +158,10 @@ $eventCount = $result->num_rows;
                             <li class="page-item <?php if ($i == $page) echo 'active'; ?>"><a class="page-link" href="events.php?p=<?= $i ?>&order=<?= $order ?>"><?= $i ?></a></li>
 
                         <?php endfor; ?>
+                        
                         <li class="page-item <?php if ($page >= $totalPage) echo 'disabled'; ?>">
                             <a class="page-link" href="?p=<?php echo min($totalPage, $page + 1); ?>&order=<?php echo htmlspecialchars($order); ?>" aria-label="Next">
-                                <i class="fa-solid fa-chevron-right"></i>
+                                <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
                     </ul>
