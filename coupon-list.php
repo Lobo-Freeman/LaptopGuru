@@ -184,8 +184,8 @@ $rowsCount = $result->num_rows;
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">使用者管理:</h6>
-                        <a class="collapse-item" href="buttons.html">使用者列表</a>
-                        <a class="collapse-item" href="cards.html">新增使用者</a>
+                        <a class="collapse-item" href="users.php">使用者列表</a>
+                        <a class="collapse-item" href="create-user.php">新增使用者</a>
                     </div>
                 </div>
             </li>
