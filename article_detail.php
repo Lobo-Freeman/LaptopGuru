@@ -42,7 +42,7 @@ $rows = $result->fetch_assoc();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <style>
-        .article_text{
+        .article_text {
             text-align: justify;
         }
     </style>
@@ -64,54 +64,55 @@ $rows = $result->fetch_assoc();
 
     </header>
     <div class="container mt-5">
-        <table class="table table-bordered">
+        <table class="table table-bordered w-100">
             <?php if ($articleCount > 0) : ?>
-                <thead>
+                <thead class="">
                     <tr>
-                        <th>文章細節</th>
+                        <th><span class="fw-bold fs-5">文章細節</span></th>
+                        <th></th>
                     </tr>
+
                 </thead>
                 <tbody>
                     <!------------------------------- 欄位大小要注意 --------------------------------->
-
                     <tr>
-                        <td class="col-auto">article_id</td>
+                        <td class="col-auto text-nowrap">文章ID</td>
                         <td><?= $rows["article_id"] ?></td>
                     </tr>
                     <tr>
-                        <td>article_created_time</td>
+                        <td class="text-nowrap">原文文章建立時間</td>
                         <td><?= $rows["article_created_time"] ?></td>
                     </tr>
                     <tr>
-                        <td>article_brand</td>
+                        <td class="text-nowrap">文章品牌</td>
                         <td><?= $rows["article_brand"] ?></td>
                     </tr>
                     <tr>
-                        <td>article_type1</td>
+                        <td class="text-nowrap">文章類型1</td>
                         <td><?= $rows["article_type1"] ?></td>
                     </tr>
                     <tr>
-                        <td>article_type2</td>
+                        <td class="text-nowrap">文章類型2</td>
                         <td><?= $rows["article_type2"] ?></td>
                     </tr>
                     <tr>
-                        <td>article_type3</td>
+                        <td class="text-nowrap">文章類型3</td>
                         <td><?= $rows["article_type3"] ?></td>
                     </tr>
                     <tr>
-                        <td>article_type4</td>
+                        <td class="text-nowrap">文章類型4</td>
                         <td><?= $rows["article_type4"] ?></td>
                     </tr>
                     <tr>
-                        <td>article_url_address</td>
+                        <td class="text-nowrap">原文文章網址</td>
                         <td><?= $rows["article_url_address"] ?></td>
                     </tr>
                     <tr>
-                        <td>article_introduction</td>
+                        <td class="text-nowrap">文章短介紹</td>
                         <td><?= $rows["article_introduction"] ?></td>
                     </tr>
                     <tr>
-                        <td>article_images_thumbnail</td>
+                        <td class="text-nowrap">文章縮圖</td>
                         <td>
                             <?= $rows["article_images_thumbnail"] ?>
                             <div class="container">
@@ -120,7 +121,7 @@ $rows = $result->fetch_assoc();
                         </td>
                     </tr>
                     <tr>
-                        <td>article_images_title</td>
+                        <td class="text-nowrap">文章圖片 (標題)</td>
                         <td>
                             <?= $rows["article_images_title"] ?>
                             <div class="container">
@@ -129,11 +130,11 @@ $rows = $result->fetch_assoc();
                         </td>
                     </tr>
                     <tr>
-                        <td>article_video_title_url</td>
+                        <td class="text-nowrap">文章影片網址</td>
                         <td><?= $rows["article_video_title_url"] ?></td>
                     </tr>
                     <tr>
-                        <td>article_images_main</td>
+                        <td class="text-nowrap">文章圖片(主要)</td>
                         <td>
                             <?= $rows["article_images_main"] ?>
                             <div class="container">
@@ -142,7 +143,7 @@ $rows = $result->fetch_assoc();
                         </td>
                     </tr>
                     <tr>
-                        <td>article_images_content_1</td>
+                        <td class="text-nowrap">文章圖片(內文1)</td>
                         <td>
                             <?= $rows["article_images_content_1"] ?>
                             <div class="container">
@@ -151,7 +152,7 @@ $rows = $result->fetch_assoc();
                         </td>
                     </tr>
                     <tr>
-                        <td>article_images_content_2</td>
+                        <td class="text-nowrap">文章圖片(內文2)</td>
                         <td>
                             <?= $rows["article_images_content_2"] ?>
                             <div class="container">
@@ -160,7 +161,7 @@ $rows = $result->fetch_assoc();
                         </td>
                     </tr>
                     <tr>
-                        <td>article_images_content_3</td>
+                        <td class="text-nowrap">文章圖片(內文3)</td>
                         <td>
                             <?= $rows["article_images_content_3"] ?>
                             <div class="container">
@@ -169,13 +170,13 @@ $rows = $result->fetch_assoc();
                         </td>
                     </tr>
                     <tr>
-                        <td>article_text</td>
+                        <td class="text-nowrap">文章內容</td>
                         <td class="article_text"><?= $rows["article_text"] ?></td>
                     </tr>
                     <tr>
-                        <td>article_preview</td>
+                        <td class="text-nowrap">文章預覽</td>
                         <td>
-                            <a href=""><i class="fa-solid fa-eye"></i></a>
+                            <a href="" class="btn btn-outline-secondary"><i class="fa-solid fa-eye "></i></a>
                         </td>
                     </tr>
 
