@@ -431,7 +431,7 @@ $result = $conn->query($sql);
                                             
                                             <td><?= $row["product_id"] ?></td>
                                             <?php if(isset($row["product_img_path"])): ?>
-                                            <td><img src="<?= $row["product_img_path"] ?>" alt="" style="width: 100px;"></td>
+                                            <td><img src="assets/<?= $row["product_img_path"] ?>" alt="" style="width: 100px;"></td>
                                             <?php else: ?>
                                             <td><img src="" alt="" style="width: 100px;"></td>
                                             <?php endif; ?>
