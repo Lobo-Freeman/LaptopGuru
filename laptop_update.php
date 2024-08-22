@@ -4,7 +4,7 @@ if (!isset($_POST["model"])) {
     exit;
 }
 
-require_once("../topics/db_connect.php");
+require_once("db_connect.php");
 
 $id = $_POST["id"];
 $original_images = $_POST["original_images"];

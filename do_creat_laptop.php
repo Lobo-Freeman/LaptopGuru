@@ -1,6 +1,6 @@
 <?php
 
-require_once("../topics/db_connect.php");
+require_once("db_connect.php");
 
 if(!isset($_POST["model"])){
     echo"請循正常管道進入此頁";

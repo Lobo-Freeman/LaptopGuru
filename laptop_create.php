@@ -1,5 +1,5 @@
 <?php
-require_once("../topics/db_connect.php");
+require_once("db_connect.php");
 $sql = "SELECT * FROM rental WHERE state='available'";
 // $sql = "SELECT id, images, model, brand, price, num, state, user_id, created_at FROM rental WHERE state='available'";
 $result = $conn->query($sql);
@@ -28,7 +28,7 @@ $row = $result->fetch_assoc(); //一筆資料
         rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossorigin="anonymous" />
-    <?php include("../topics/css.php") ?>
+    <?php include("css.php") ?>
 </head>
 
 <body>
