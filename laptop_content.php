@@ -6,7 +6,7 @@ if (!isset($_GET["id"])) {
 
 $id = $_GET["id"];
 
-require_once("../topics/db_connect.php");
+require_once("topics/db_connect.php");
 $sql = "SELECT id, images, model, brand, price, num, created_at FROM rental
 where id = '$id' and state='available'
 ";
@@ -39,7 +39,7 @@ if($laptopCounts>0){
         rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossorigin="anonymous" />
-        <?php include("../topics/css.php")?>
+        <?php include("css.php")?>
 
 </head>
 
