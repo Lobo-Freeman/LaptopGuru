@@ -1,6 +1,6 @@
 <?php
 
-require_once("../topics/db_connect.php");
+require_once("db_connect.php");
 
 $sql = "SELECT * FROM rental WHERE state='available' and price BETWEEN 500 and 2000";
 $result = $conn->query($sql);

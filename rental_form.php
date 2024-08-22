@@ -1,5 +1,5 @@
 <?php
-require_once("../topics/db_connect.php");
+require_once("db_connect.php");
 
 $sqlAll = "SELECT * FROM rental WHERE state='available'";
 $resultAll = $conn->query($sqlAll);
@@ -91,7 +91,7 @@ if (isset($_GET["min"]) && isset($_GET["max"])) {
 <head>
     <meta charset="UTF-8">
     <title>Rental_Form</title>
-    <?php include("../topics/css.php") ?>
+    <?php include("css.php") ?>
 </head>
 
 <body>
@@ -212,7 +212,7 @@ if (isset($_GET["min"]) && isset($_GET["max"])) {
                     <?php foreach ($rows as $laptop) : ?>
                         <tr>
                             <td><?= $laptop["id"] ?></td>
-                            <td><img src="/topics/image/<?= $laptop['images'] ?>" alt="<?= $laptop['model'] ?>" width="100"></td>
+                            <td><img src="image/<?= $laptop['images'] ?>" alt="<?= $laptop['model'] ?>" width="100"></td>
                             <td><?= $laptop["model"] ?></td>
                             <td><?= $laptop["brand"] ?></td>
                             <td><?= $laptop["price"] ?></td>

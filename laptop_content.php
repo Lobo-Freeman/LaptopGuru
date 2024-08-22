@@ -6,7 +6,7 @@ if (!isset($_GET["id"])) {
 
 $id = $_GET["id"];
 
-require_once("../topics/db_connect.php");
+require_once("db_connect.php");
 $sql = "SELECT id, images, model, brand, price, num, created_at FROM rental
 where id = '$id' and state='available'
 ";
@@ -39,7 +39,7 @@ if($laptopCounts>0){
         rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossorigin="anonymous" />
-        <?php include("../topics/css.php")?>
+        <?php include("css.php")?>
 
 </head>
 
@@ -47,7 +47,7 @@ if($laptopCounts>0){
     <div class="container ">
         <h2 class="text-center mt-3">租賃商品內容</h2>
             <div class="py-3">
-                <a class="btn btn-outline-secondary" href="rental_form.php?=<?=$row["id"]?>" title="回租賃清單">
+                <a class="btn btn-secondary" href="rental_form.php?=<?=$row["id"]?>" title="回租賃清單">
                 <i class="fa-solid fa-circle-chevron-left"></i>
                 </a>
             </div>
@@ -84,7 +84,7 @@ if($laptopCounts>0){
                     </table>
 
                     <div class="py-2">
-                        <a class="btn btn-outline-secondary" href="laptop_edit.php?id=<?=$row["id"]?>" title="資料修改">
+                        <a class="btn btn-secondary" href="laptop_edit.php?id=<?=$row["id"]?>" title="資料修改">
                         <i class="fa-regular fa-pen-to-square"></i>
                         </a>
                     </div>

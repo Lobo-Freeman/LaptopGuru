@@ -6,7 +6,7 @@ if (!isset($_GET["id"])) {
 
 $id = $_GET["id"];
 
-require_once("../topics/db_connect.php");
+require_once("db_connect.php");
 $sql = "SELECT * FROM rental
 where id = '$id' and state='available'
 ";
@@ -39,14 +39,14 @@ if ($laptopCounts > 0) {
         rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossorigin="anonymous" />
-    <?php include("../topics/css.php") ?>
+    <?php include("css.php") ?>
 </head>
 
 <body>
     <div class="container ">
         <h2 class="text-center mt-3">資料修改</h2>
         <div class="py-3">
-            <a class="btn btn-outline-secondary" href="laptop_content.php?id=<?= $row["id"] ?>" title="回租賃商品內容">
+            <a class="btn btn-secondary" href="laptop_content.php?id=<?= $row["id"] ?>" title="回租賃商品內容">
                 <i class="fa-solid fa-circle-chevron-left"></i>
             </a>
         </div>
@@ -113,13 +113,16 @@ if ($laptopCounts > 0) {
                     <tr>
                         <td>圖片</td>
                         <td>
-                            <img src="/topics/image/<?= $row['images'] ?>" alt="<?= $row['model'] ?>" width="100">
-                            <input type="hidden" name="original_images" value="<?= $row['images'] ?>">
+                            <img src="image/<?= $row['images'] ?>" alt="<?= $row['model'] ?>" width="100">
+                            <input type="hidden" name="original_images" value="<?= $row['images'] ?>"> <!-- 原始圖片 -->
+                            <br>
+                            <!-- 上傳新圖片 -->                            
                             <input class="form-control" type="file" id="images" name="images">
+                            <input  class="form-control" type="file" name="original_images" value="<?= $row['images'] ?>">
 
                             <!-- 顯示當前圖片（如果存在） -->
                             <?php if (!empty($row["images"])): ?>
-                                <img class="img-fluid mt-2" src="/topics/image/<?= $row['images'] ?>" alt="Current Event Picture" style="max-width: 200px;">
+                                <img class="img-fluid mt-2" src="image/<?= $row['images'] ?>" alt="Current Event Picture" style="max-width: 200px;">
                                 <p class="mt-1">當前圖片: <?= $row['images'] ?></p>
                             <?php endif; ?>
                         </td>
@@ -130,7 +133,7 @@ if ($laptopCounts > 0) {
                     <tr>
                         <td colspan="2">
                             <!-- 上傳按鈕 -->
-                            <button type="submit" class="btn btn-outline-secondary rounded-pill">
+                            <button type="submit" class="btn btn-secondary rounded-pill">
                                 <i class="fa-solid fa-floppy-disk me-2"></i>儲存
                             </button>
                         </td>

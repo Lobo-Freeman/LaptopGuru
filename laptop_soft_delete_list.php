@@ -1,5 +1,5 @@
 <?php
-require_once("../topics/db_connect.php");
+require_once("db_connect.php");
 
 $sql = "SELECT * FROM rental WHERE state='No'";
 $result = $conn->query($sql);
@@ -22,7 +22,7 @@ if ($result->num_rows > 0) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
-    <?php include("../topics/css.php") ?>
+    <?php include("css.php") ?>
 </head>
 
 <body>
@@ -54,7 +54,7 @@ if ($result->num_rows > 0) {
                     <?php foreach ($rows as $laptop) : ?>
                         <tr>
                             <td><?= $laptop["id"] ?></td>
-                            <td><img src="/topics/image/<?= $laptop['images'] ?>" alt="<?= $laptop['model'] ?>" width="100"></td>
+                            <td><img src="image/<?= $laptop['images'] ?>" alt="<?= $laptop['model'] ?>" width="100"></td>
                             <td><?= $laptop["model"] ?></td>
                             <td><?= $laptop["brand"] ?></td>
                             <td><?= $laptop["price"] ?></td>

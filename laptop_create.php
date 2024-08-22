@@ -1,5 +1,5 @@
 <?php
-require_once("../topics/db_connect.php");
+require_once("db_connect.php");
 $sql = "SELECT * FROM rental WHERE state='available'";
 // $sql = "SELECT id, images, model, brand, price, num, state, user_id, created_at FROM rental WHERE state='available'";
 $result = $conn->query($sql);
@@ -28,7 +28,7 @@ $row = $result->fetch_assoc(); //一筆資料
         rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossorigin="anonymous" />
-    <?php include("../topics/css.php") ?>
+    <?php include("css.php") ?>
 </head>
 
 <body>
@@ -36,7 +36,7 @@ $row = $result->fetch_assoc(); //一筆資料
         <h2 class="text-center mt-3">新增資料</h2>
 
         <div class="py-3">
-            <a class="btn btn-outline-secondary" href="rental_form.php" title="回租賃清單">
+            <a class="btn btn-secondary" href="rental_form.php" title="回租賃清單">
                 <i class="fa-solid fa-circle-chevron-left"></i>
             </a>
         </div>
@@ -80,7 +80,7 @@ $row = $result->fetch_assoc(); //一筆資料
                 <!-- 這裡的 name 屬性必須設置，PHP 才能接收到檔案 -->
                 <input class="form-control" type="file" id="images" name="images">
             </div>
-            <button type="submit" class="btn btn-outline-secondary rounded-pill">
+            <button type="submit" class="btn btn-secondary rounded-pill">
                 <i class="fa-solid fa-paper-plane me-2"></i>送出
             </button>
         </form>
