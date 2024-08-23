@@ -22,7 +22,7 @@ if (isset($_GET["product_id"])) {
     <?php require_once("css.php"); ?>
     <style>
         .product_img {
-            width: 200px;
+            
             height: 200px;
         }
     </style>
