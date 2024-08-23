@@ -31,8 +31,8 @@
 //         }
 //         $stmt->close();
 //     }
-    
-    
+
+
 // }else{
 //     echo json_encode(["status" => 0, "message" => "無效的請求。"]);
 // }
@@ -44,7 +44,6 @@
 
 require_once("db_connect.php");
 
-$product_id = $_POST["product_id"];
 $model = $_POST["model"];
 $product_brand = $_POST["product_brand"];
 $list_price = $_POST["list_price"];
@@ -62,7 +61,7 @@ $product_I_O = $_POST["product_I_O"];
 $pic = $_FILES["pic"];
 $original_pic = $_POST["original_pic"];
 
-var_dump($pic);
+
 
 
 
@@ -75,64 +74,47 @@ var_dump($pic);
 // $pic = $_FILES["pic"];//取得上傳檔案的資訊
 // var_dump($pic);
 
-if($_FILES["pic"]["error"]==0){
-    $filename=$_FILES["pic"]["name"];
-    $fileinfo=pathinfo($filename);//取得檔案資訊
-    $extention=$fileinfo["extension"];//取得副檔名
+
+
+$sql = "INSERT INTO  product  (model, product_brand, list_price, affordance, product_color, product_size, product_weight, product_CPU, product_RAM, discrete_display_card, product_display_card, product_hardisk_type, product_hardisk_volume, `product_I/O`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$stmt = $conn->prepare($sql);
+
+$stmt->bind_param("ssssssssssssss", $model, $product_brand, $list_price, $affordance, $product_color, $product_size, $product_weight, $product_CPU, $product_RAM, $discrete_display_card, $product_display_card, $product_hardisk_type, $product_hardisk_volume, $product_I_O);
+
+if ($stmt->execute()) {
+    echo json_encode(["status" => 1, "message" => "商品新增成功。"]);
+} else {
+    echo json_encode(["status" => 0, "message" => "商品新增失敗。"]);
+}
+$product_id = $conn->insert_id;
+
+
+
+if ($_FILES["pic"]["error"] == 0) {
+    $filename = $_FILES["pic"]["name"];
+    $fileinfo = pathinfo($filename); //取得檔案資訊
+    $extention = $fileinfo["extension"]; //取得副檔名
     // echo $extention;
     // exit;
-    $newFilename=time().".$extention";
+    $newFilename = time() . ".$extention";
 
-    $Imgcheck = "SELECT * FROM product_img WHERE img_product_id = $product_id";
-    $result = $conn->query($Imgcheck);
-    $resultCount = $result->num_rows;
-
-    if(move_uploaded_file($_FILES["pic"]["tmp_name"], "assets/".$newFilename)){//將檔案移動到指定位置
+    if (move_uploaded_file($_FILES["pic"]["tmp_name"], "assets/" . $newFilename)) { //將檔案移動到指定位置
         $now = date("Y-m-d H:i:s");
 
-        if($resultCount > 0){
-            $sqlImg = "UPDATE product_img SET product_img_path = '$newFilename' WHERE img_product_id = $product_id";
-            if($conn->query($sqlImg)===true){
-                echo "New record created successfully";
-             }else{
-                 echo "Error:".$sqlImg."<br>".$conn->error;
-             }
-        }else{
-            $sqlImg = "INSERT INTO product_img(img_product_id,product_img_path) VALUES ('$product_id', '$newFilename' )";
-            if($conn->query($sqlImg)===true){
-               echo "New record created successfully";
-            }else{
-                echo "Error:".$sqlImg."<br>".$conn->error;
-            }
-        }
-        
 
-    }else{
+        $sqlImg = "INSERT INTO product_img(img_product_id,product_img_path) VALUES ('$product_id', '$newFilename' )";
+        if ($conn->query($sqlImg) === true) {
+            echo "New record created successfully";
+        } else {
+            echo "Error:" . $sqlImg . "<br>" . $conn->error;
+        }
+    } else {
         echo "Upload Fail";
     }
-
-    
-
-
 }
-
-$sql = "UPDATE product SET model = ?, product_brand = ?, list_price = ?, affordance = ?, product_color = ?, product_size = ?, product_weight = ?, product_CPU = ?, product_RAM = ?, discrete_display_card = ?, product_display_card = ?, product_hardisk_type = ?, product_hardisk_volume = ?, `product_I/O` = ? WHERE product_id = ?";
-    $stmt = $conn->prepare($sql);
-
-    $stmt->bind_param("ssssssssssssssi", $model, $product_brand, $list_price, $affordance, $product_color, $product_size, $product_weight, $product_CPU, $product_RAM, $discrete_display_card, $product_display_card, $product_hardisk_type, $product_hardisk_volume, $product_I_O, $product_id);
-
-    if($stmt->execute()){
-        echo json_encode(["status" => 1, "message" => "商品更新成功。"]);
-    } else {
-        echo json_encode(["status" => 0, "message" => "商品更新失敗。"]);
-    }
-
-
 
 $stmt->close();
 
 $conn->close();
 
-    header("Location: product-list.php");
-
-
+header("Location: product-list.php");

@@ -50,7 +50,7 @@ if (isset($_GET["order"])) {
 
 switch ($order) {
     case 0:
-        $where_clause = "ORDER BY product_id ASC";
+        $where_clause = "ORDER BY product_id DESC";
         break;
     case 1:
         $where_clause = "ORDER BY model ASC";
@@ -356,14 +356,14 @@ $result = $conn->query($sql);
                         <h1 class="text-center">商品列表</h1>
                         <div class="py-2">
                             <?php if (isset($_GET["search"])) : ?>
-                                <a class="btn btn-secondary" href="product-list.php"><i class="fa-solid fa-arrow-left" title="回商品列表"></i></a>
+                                <a class="btn btn-secondary" href="product-list.php" title="回商品列表"><i class="fa-solid fa-arrow-left" title="回商品列表"></i></a>
                             <?php endif; ?>
-                            <a class="btn btn-secondary" href="create-product.php"><i class="fa-solid fa-square-plus"></i></i></a>
+                            <a class="btn btn-secondary" href="create-product.php" title="新增商品"><i class="fa-solid fa-square-plus"></i></i></a>
                         </div>
                         <form>
                             <div class="input-group">
                                 <div>
-                                    <select class="form-select" name="order" id="order_select">
+                                    <select class="form-select" name="order" id="order_select" title="排序">
                                         <option value="0" <?= isset($_GET["order"]) && $_GET["order"] == 0 ? "selected" : ""; ?>>按id排序</option>
                                         <option value="1" <?= isset($_GET["order"]) && $_GET["order"] == 1 ? "selected" : ""; ?>>按型號排序</option>
                                         <option value="2" <?= isset($_GET["order"]) && $_GET["order"] == 2 ? "selected" : ""; ?>>按廠牌排序</option>
