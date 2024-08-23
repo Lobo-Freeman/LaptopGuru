@@ -83,7 +83,7 @@ $eventCount = $result->num_rows;
     <title>events</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <?php include("css.php"); ?>
+    <?php include("event_css.php"); ?>
 </head>
 
 <body>
