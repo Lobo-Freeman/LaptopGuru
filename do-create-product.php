@@ -96,10 +96,10 @@ if ($_FILES["pic"]["error"] == 0) {
     $extention = $fileinfo["extension"]; //取得副檔名
     // echo $extention;
     // exit;
-    $newFilename = time() . ".$extention";
+    $newFilename = pathinfo($filename, PATHINFO_FILENAME)."_".time() . ".$extention";
 
     if (move_uploaded_file($_FILES["pic"]["tmp_name"], "assets/" . $newFilename)) { //將檔案移動到指定位置
-        $now = date("Y-m-d H:i:s");
+        
 
 
         $sqlImg = "INSERT INTO product_img(img_product_id,product_img_path) VALUES ('$product_id', '$newFilename' )";
