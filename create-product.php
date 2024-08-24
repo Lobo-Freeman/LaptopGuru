@@ -62,8 +62,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">使用者管理:</h6>
-                        <a class="collapse-item" href="buttons.html">使用者列表</a>
-                        <a class="collapse-item" href="cards.html">新增使用者</a>
+                        <a class="collapse-item" href="users.php">使用者列表</a>
+                        <a class="collapse-item" href="create-user.php">新增使用者</a>
                     </div>
                 </div>
             </li>
@@ -98,9 +98,9 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">租賃管理:</h6>
-                        <a class="collapse-item" href="login.html">租賃列表</a>
-                        <a class="collapse-item" href="register.html">新增可租賃筆電</a>
-                        <a class="collapse-item" href="forgot-password.html">已下架租賃列表</a>
+                        <a class="collapse-item" href="topics/rental_form.php">租賃列表</a>
+                        <a class="collapse-item" href="topics/laptop_create.php">新增可租賃筆電</a>
+                        <a class="collapse-item" href="topics/laptop_soft_delete_list.php">已下架租賃列表</a>
                     </div>
                 </div>
             </li>
@@ -132,8 +132,8 @@
                 <div id="collapseArticle" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">文章管理:</h6>
-                        <a class="collapse-item" href="login.html">文章列表</a>
-                        <a class="collapse-item" href="register.html">新增文章</a>
+                        <a class="collapse-item" href="article_manange.php">文章列表</a>
+                        <a class="collapse-item" href="article_add.php">新增文章</a>
                     </div>
                 </div>
             </li>
@@ -147,8 +147,8 @@
                 <div id="collapseEvent" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">活動管理:</h6>
-                        <a class="collapse-item" href=" ">活動列表</a>
-                        <a class="collapse-item" href="register.html">新增活動</a>
+                        <a class="collapse-item" href="events.php">活動列表</a>
+                        <a class="collapse-item" href="create_event.php">新增活動</a>
                     </div>
                 </div>
             </li>
@@ -300,8 +300,8 @@
                                 <input type="text" class="form-control" id="product_hardisk_type" name="product_hardisk_type" required>
                                 <label for="product_hardisk_volume" class="form-label">硬碟容量</label>
                                 <input type="text" class="form-control" id="product_hardisk_volume" name="product_hardisk_volume" required>
-                                <label for="product_I/O" class="form-label" >I/O埠</label>
-                                <textarea type="text" class="form-control" id="product_I_O"  name="product_I_O" rows="5" ></textarea>
+                                <label for="product_I/O" class="form-label">I/O埠</label>
+                                <textarea type="text" class="form-control" id="product_I_O" name="product_I_O" rows="5"></textarea>
 
                                 <!-- <button type="button" class="btn btn-primary" onclick="updateProduct();">更新</button> -->
                                 <button type="submit" class="btn btn-secondary">

@@ -107,10 +107,9 @@ str_replace('*', '', $row['coupon_discount']);
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">商品管理:</h6>
-                        <a class="collapse-item" href="utilities-color.html">商品列表</a>
-                        <a class="collapse-item" href="utilities-border.html">新增商品</a>
-                        <a class="collapse-item" href="utilities-animation.html">已下架商品列表</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <a class="collapse-item" href="product-list.php?valid=1">商品列表</a>
+                        <a class="collapse-item" href="create-product.php">新增商品</a>
+                        <a class="collapse-item" href="product-list.php?valid=0">已下架商品列表</a>
                     </div>
                 </div>
             </li>
@@ -127,9 +126,9 @@ str_replace('*', '', $row['coupon_discount']);
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">租賃管理:</h6>
-                        <a class="collapse-item" href="login.html">租賃列表</a>
-                        <a class="collapse-item" href="register.html">新增可租賃筆電</a>
-                        <a class="collapse-item" href="forgot-password.html">已下架租賃列表</a>
+                        <a class="collapse-item" href="topics/rental_form.php">租賃列表</a>
+                        <a class="collapse-item" href="topics/laptop_create.php">新增可租賃筆電</a>
+                        <a class="collapse-item" href="topics/laptop_soft_delete_list.php">已下架租賃列表</a>
                     </div>
                 </div>
             </li>
@@ -161,8 +160,8 @@ str_replace('*', '', $row['coupon_discount']);
                 <div id="collapseArticle" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">文章管理:</h6>
-                        <a class="collapse-item" href="login.html">文章列表</a>
-                        <a class="collapse-item" href="register.html">新增文章</a>
+                        <a class="collapse-item" href="article_manange.php">文章列表</a>
+                        <a class="collapse-item" href="article_add.php">新增文章</a>
                     </div>
                 </div>
             </li>
@@ -176,11 +175,12 @@ str_replace('*', '', $row['coupon_discount']);
                 <div id="collapseEvent" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">活動管理:</h6>
-                        <a class="collapse-item" href="login.html">活動列表</a>
-                        <a class="collapse-item" href="register.html">新增活動</a>
+                        <a class="collapse-item" href="events.php">活動列表</a>
+                        <a class="collapse-item" href="create_event.php">新增活動</a>
                     </div>
                 </div>
             </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -209,7 +209,7 @@ str_replace('*', '', $row['coupon_discount']);
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    
+
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 

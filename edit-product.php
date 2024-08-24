@@ -22,7 +22,7 @@ if (isset($_GET["product_id"])) {
     <?php require_once("css.php"); ?>
     <style>
         .product_img {
-            
+
             height: 200px;
         }
     </style>
@@ -73,8 +73,8 @@ if (isset($_GET["product_id"])) {
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">使用者管理:</h6>
-                        <a class="collapse-item" href="buttons.html">使用者列表</a>
-                        <a class="collapse-item" href="cards.html">新增使用者</a>
+                        <a class="collapse-item" href="users.php">使用者列表</a>
+                        <a class="collapse-item" href="create-user.php">新增使用者</a>
                     </div>
                 </div>
             </li>
@@ -109,9 +109,9 @@ if (isset($_GET["product_id"])) {
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">租賃管理:</h6>
-                        <a class="collapse-item" href="login.html">租賃列表</a>
-                        <a class="collapse-item" href="register.html">新增可租賃筆電</a>
-                        <a class="collapse-item" href="forgot-password.html">已下架租賃列表</a>
+                        <a class="collapse-item" href="topics/rental_form.php">租賃列表</a>
+                        <a class="collapse-item" href="topics/laptop_create.php">新增可租賃筆電</a>
+                        <a class="collapse-item" href="topics/laptop_soft_delete_list.php">已下架租賃列表</a>
                     </div>
                 </div>
             </li>
@@ -143,8 +143,8 @@ if (isset($_GET["product_id"])) {
                 <div id="collapseArticle" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">文章管理:</h6>
-                        <a class="collapse-item" href="login.html">文章列表</a>
-                        <a class="collapse-item" href="register.html">新增文章</a>
+                        <a class="collapse-item" href="article_manange.php">文章列表</a>
+                        <a class="collapse-item" href="article_add.php">新增文章</a>
                     </div>
                 </div>
             </li>
@@ -158,12 +158,11 @@ if (isset($_GET["product_id"])) {
                 <div id="collapseEvent" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">活動管理:</h6>
-                        <a class="collapse-item" href=" ">活動列表</a>
-                        <a class="collapse-item" href="register.html">新增活動</a>
+                        <a class="collapse-item" href="events.php">活動列表</a>
+                        <a class="collapse-item" href="create_event.php">新增活動</a>
                     </div>
                 </div>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -263,99 +262,99 @@ if (isset($_GET["product_id"])) {
                 <!-- 主要頁面 -->
                 <div class="container-fluid">
 
-                    
 
 
-                <div class="container">
-                    <h1 class="text-center">編輯商品</h1>
-                    <div class="py-2">
-                        <a class="btn btn-secondary" href="product-list.php"><i class="fa-solid fa-arrow-left" title="回商品列表"></i></a>
-                    </div>
+
+                    <div class="container">
+                        <h1 class="text-center">編輯商品</h1>
+                        <div class="py-2">
+                            <a class="btn btn-secondary" href="product-list.php"><i class="fa-solid fa-arrow-left" title="回商品列表"></i></a>
+                        </div>
 
 
-                    <div class="form-group">
-                        <form action="update-product.php" method="post" enctype="multipart/form-data">
-                            <label for="product_name">商品圖片</label>
+                        <div class="form-group">
+                            <form action="update-product.php" method="post" enctype="multipart/form-data">
+                                <label for="product_name">商品圖片</label>
 
-                            <?php
-                            if (isset($row["product_img_path"])) {
-                                if (is_array($row["product_img_path"])) {
-                                    foreach ($row["product_img_path"] as $i => $img) {
-                                        echo "<img id='oldimg[{$row["img_id"]}]' src='assets/$img'  class='product_img'/>";
+                                <?php
+                                if (isset($row["product_img_path"])) {
+                                    if (is_array($row["product_img_path"])) {
+                                        foreach ($row["product_img_path"] as $i => $img) {
+                                            echo "<img id='oldimg[{$row["img_id"]}]' src='assets/$img'  class='product_img'/>";
+                                            // echo "<button type='button' class='btn btn-secondary delete_old_img' data-old_img='{$row["img_id"]}'>移除舊圖片</button>";
+                                        }
+                                    } else {
+                                        echo "<img id='oldimg[{$row['img_id']}]' src='assets/{$row["product_img_path"]}'class='product_img'/>";
                                         // echo "<button type='button' class='btn btn-secondary delete_old_img' data-old_img='{$row["img_id"]}'>移除舊圖片</button>";
                                     }
-                                } else {
-                                    echo "<img id='oldimg[{$row['img_id']}]' src='assets/{$row["product_img_path"]}'class='product_img'/>";
-                                    // echo "<button type='button' class='btn btn-secondary delete_old_img' data-old_img='{$row["img_id"]}'>移除舊圖片</button>";
                                 }
-                            }
-                            ?>
-                            <!-- <button type="button" class="btn btn-secondary" onclick="addImageFile()">+</button>
+                                ?>
+                                <!-- <button type="button" class="btn btn-secondary" onclick="addImageFile()">+</button>
                 <button type="button" class="btn btn-secondary" onclick="removeImageFile()">-</button>
                 <div id="add_image">
 
                 </div> -->
-                            <div class="mb-2">
-                                <input type="file" name="pic" class="form-control" value="<?= $row['img_product_id'] ?>">
-                                <input type="hidden" name="original_pic" value="<?= $row['img_product_id'] ?>">
-                            </div>
+                                <div class="mb-2">
+                                    <input type="file" name="pic" class="form-control" value="<?= $row['img_product_id'] ?>">
+                                    <input type="hidden" name="original_pic" value="<?= $row['img_product_id'] ?>">
+                                </div>
 
 
-                            <label for="product_id">商品id</label>
-                            <input type="text" class="form-control" id="product_id" value="<?php echo $row["product_id"]; ?>" readonly name="product_id">
-                            <label for="model">商品型號</label>
-                            <input type="text" class="form-control" id="model" value="<?php echo $row["model"]; ?>" name="model" required>
-                            <label for="product_brand">品牌</label>
-                            <input type="text" class="form-control" id="product_brand" value="<?php echo $row["product_brand"]; ?>" name="product_brand" required>
-                            <label for="list_price" class="form-label">商品售價</label>
-                            <input type="number" class="form-control" id="list_price" value="<?php echo $row["list_price"]; ?>" name="list_price" required>
-                            <label for="affordance" class="form-label">用途</label>
-                            <input type="text" class="form-control" id="affordance" value="<?php echo $row["affordance"]; ?>" name="affordance" required>
-                            <label for="product_color" class="form-label">商品顏色</label>
-                            <input type="text" class="form-control" id="product_color" value="<?php echo $row["product_color"]; ?>" name="product_color" required>
-                            <label for="product_size" class="form-label">商品尺寸</label>
-                            <input type="text" class="form-control" id="product_size" value="<?php echo $row["product_size"]; ?>" name="product_size" required>
-                            <label for="product_weight" class="form-label">商品重量</label>
-                            <input type="text" class="form-control" id="product_weight" value="<?php echo $row["product_weight"]; ?>" name="product_weight" required>
-                            <label for="product_CPU" class="form-label">處理器</label>
-                            <input type="text" class="form-control" id="product_CPU" value="<?php echo $row["product_CPU"]; ?>" name="product_CPU" required>
-                            <label for="product_RAM" class="form-label">記憶體</label>
-                            <input type="text" class="form-control" id="product_RAM" value="<?php echo $row["product_RAM"]; ?>" name="product_RAM" required>
-                            <label for="discrete_display_card" class="form-label">是否為獨顯</label>
-                            <input type="text" class="form-control" id="discrete_display_card" value="<?php echo $row["discrete_display_card"]; ?>" name="discrete_display_card" required>
-                            <label for="product_display_card" class="form-label">顯示晶片</label>
-                            <input type="text" class="form-control" id="product_display_card" value="<?php echo $row["product_display_card"]; ?>" name="product_display_card" required>
-                            <label for="product_hardisk_type" class="form-label">硬碟類型</label>
-                            <input type="text" class="form-control" id="product_hardisk_type" value="<?php echo $row["product_hardisk_type"]; ?>" name="product_hardisk_type" required>
-                            <label for="product_hardisk_volume" class="form-label">硬碟容量</label>
-                            <input type="text" class="form-control" id="product_hardisk_volume" value="<?php echo $row["product_hardisk_volume"]; ?>" name="product_hardisk_volume" required>
-                            <label for="product_I/O" class="form-label">I/O埠</label>
-                            <textarea type="text" class="form-control" id="product_I_O"  name="product_I_O" rows="5"><?php echo $row["product_I/O"]; ?></textarea>
-                            <!-- <button type="button" class="btn btn-primary" onclick="updateProduct();">更新</button> -->
-                            <button type="submit" class="btn btn-secondary">
-                                送出
-                            </button>
-                        </form>
+                                <label for="product_id">商品id</label>
+                                <input type="text" class="form-control" id="product_id" value="<?php echo $row["product_id"]; ?>" readonly name="product_id">
+                                <label for="model">商品型號</label>
+                                <input type="text" class="form-control" id="model" value="<?php echo $row["model"]; ?>" name="model" required>
+                                <label for="product_brand">品牌</label>
+                                <input type="text" class="form-control" id="product_brand" value="<?php echo $row["product_brand"]; ?>" name="product_brand" required>
+                                <label for="list_price" class="form-label">商品售價</label>
+                                <input type="number" class="form-control" id="list_price" value="<?php echo $row["list_price"]; ?>" name="list_price" required>
+                                <label for="affordance" class="form-label">用途</label>
+                                <input type="text" class="form-control" id="affordance" value="<?php echo $row["affordance"]; ?>" name="affordance" required>
+                                <label for="product_color" class="form-label">商品顏色</label>
+                                <input type="text" class="form-control" id="product_color" value="<?php echo $row["product_color"]; ?>" name="product_color" required>
+                                <label for="product_size" class="form-label">商品尺寸</label>
+                                <input type="text" class="form-control" id="product_size" value="<?php echo $row["product_size"]; ?>" name="product_size" required>
+                                <label for="product_weight" class="form-label">商品重量</label>
+                                <input type="text" class="form-control" id="product_weight" value="<?php echo $row["product_weight"]; ?>" name="product_weight" required>
+                                <label for="product_CPU" class="form-label">處理器</label>
+                                <input type="text" class="form-control" id="product_CPU" value="<?php echo $row["product_CPU"]; ?>" name="product_CPU" required>
+                                <label for="product_RAM" class="form-label">記憶體</label>
+                                <input type="text" class="form-control" id="product_RAM" value="<?php echo $row["product_RAM"]; ?>" name="product_RAM" required>
+                                <label for="discrete_display_card" class="form-label">是否為獨顯</label>
+                                <input type="text" class="form-control" id="discrete_display_card" value="<?php echo $row["discrete_display_card"]; ?>" name="discrete_display_card" required>
+                                <label for="product_display_card" class="form-label">顯示晶片</label>
+                                <input type="text" class="form-control" id="product_display_card" value="<?php echo $row["product_display_card"]; ?>" name="product_display_card" required>
+                                <label for="product_hardisk_type" class="form-label">硬碟類型</label>
+                                <input type="text" class="form-control" id="product_hardisk_type" value="<?php echo $row["product_hardisk_type"]; ?>" name="product_hardisk_type" required>
+                                <label for="product_hardisk_volume" class="form-label">硬碟容量</label>
+                                <input type="text" class="form-control" id="product_hardisk_volume" value="<?php echo $row["product_hardisk_volume"]; ?>" name="product_hardisk_volume" required>
+                                <label for="product_I/O" class="form-label">I/O埠</label>
+                                <textarea type="text" class="form-control" id="product_I_O" name="product_I_O" rows="5"><?php echo $row["product_I/O"]; ?></textarea>
+                                <!-- <button type="button" class="btn btn-primary" onclick="updateProduct();">更新</button> -->
+                                <button type="submit" class="btn btn-secondary">
+                                    送出
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
+                <!-- /.container-fluid -->
+
             </div>
-            <!-- /.container-fluid -->
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
 
         </div>
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2021</span>
-                </div>
-            </div>
-        </footer>
-        <!-- End of Footer -->
-
-    </div>
-    <!-- End of Content Wrapper -->
+        <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
