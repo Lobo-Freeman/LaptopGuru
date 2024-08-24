@@ -14,6 +14,9 @@ WHERE user_id = '$id' AND valid=1
 $sqlAddress = "SELECT * FROM addresses WHERE user_id='$id'";
 $Addressquery = $conn->query($sqlAddress);
 $AddressResult = $Addressquery->fetch_assoc();
+if ($Addressquery->num_rows == 0) {
+    $AddressResult = [];
+}
 
 $result = $conn->query($sql);
 $userCount = $result->num_rows;
@@ -22,9 +25,9 @@ $row = $result->fetch_assoc();
 if ($userCount > 0) {
     $title = $row["name"];
 
-    $sqlFavorite = "SELECT user_like.*, product.name AS product_name, product.id AS product_id
+    $sqlFavorite = "SELECT user_like.*, product.model AS product_name, product.product_id AS product_id
     FROM user_like
-    JOIN product ON user_like.product_id = product.id
+    JOIN product ON user_like.product_id = product.product_id
     WHERE user_like.user_id = $id
     ";
     $resultFavorite = $conn->query($sqlFavorite);
@@ -80,7 +83,6 @@ if ($userCount > 0) {
             <div class="sidebar-heading">
                 Interface
             </div>
-
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -108,10 +110,9 @@ if ($userCount > 0) {
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">商品管理:</h6>
-                        <a class="collapse-item" href="utilities-color.html">商品列表</a>
-                        <a class="collapse-item" href="utilities-border.html">新增商品</a>
-                        <a class="collapse-item" href="utilities-animation.html">已下架商品列表</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <a class="collapse-item" href="product-list.php?valid=1">商品列表</a>
+                        <a class="collapse-item" href="create-product.php">新增商品</a>
+                        <a class="collapse-item" href="product-list.php?valid=0">已下架商品列表</a>
                     </div>
                 </div>
             </li>
@@ -128,9 +129,9 @@ if ($userCount > 0) {
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">租賃管理:</h6>
-                        <a class="collapse-item" href="login.html">租賃列表</a>
-                        <a class="collapse-item" href="register.html">新增可租賃筆電</a>
-                        <a class="collapse-item" href="forgot-password.html">已下架租賃列表</a>
+                        <a class="collapse-item" href="topics/rental_form.php">租賃列表</a>
+                        <a class="collapse-item" href="topics/laptop_create.php">新增可租賃筆電</a>
+                        <a class="collapse-item" href="topics/laptop_soft_delete_list.php">已下架租賃列表</a>
                     </div>
                 </div>
             </li>
@@ -162,8 +163,8 @@ if ($userCount > 0) {
                 <div id="collapseArticle" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">文章管理:</h6>
-                        <a class="collapse-item" href="login.html">文章列表</a>
-                        <a class="collapse-item" href="register.html">新增文章</a>
+                        <a class="collapse-item" href="article_manange.php">文章列表</a>
+                        <a class="collapse-item" href="article_add.php">新增文章</a>
                     </div>
                 </div>
             </li>
@@ -177,8 +178,8 @@ if ($userCount > 0) {
                 <div id="collapseEvent" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">活動管理:</h6>
-                        <a class="collapse-item" href=" ">活動列表</a>
-                        <a class="collapse-item" href="register.html">新增活動</a>
+                        <a class="collapse-item" href="events.php">活動列表</a>
+                        <a class="collapse-item" href="create_event.php">新增活動</a>
                     </div>
                 </div>
             </li>
@@ -230,7 +231,7 @@ if ($userCount > 0) {
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -284,7 +285,7 @@ if ($userCount > 0) {
                 <div class="container-fluid">
 
                     <div class="py-2">
-                        <a class="btn btn-secondary" href="users.php" title="回使用者列表">
+                        <a class="btn btn-outline-secondary" href="users.php" title="回使用者列表">
                             <i class="fa-solid fa-arrow-rotate-left"></i>
                             回到使用者列表
                         </a>
@@ -323,11 +324,15 @@ if ($userCount > 0) {
                                     </tr>
                                     <tr>
                                         <th>Address</th>
-                                        <td><?= $AddressResult["country"] . $AddressResult["city"] . $AddressResult["district"] . $AddressResult["remained_address"] ?></td>
+                                        <?php if ($AddressResult == null) : ?>
+                                            <td>尚未設定地址</td>
+                                        <?php else: ?>
+                                            <td><?= $AddressResult["country"] . $AddressResult["city"] . $AddressResult["district"] . $AddressResult["remained_address"] ?></td>
+                                        <?php endif; ?>
                                     </tr>
                                 </table>
                                 <div class="">
-                                    <a href="user-edit.php?id=<?= $row["user_id"] ?>" class="btn btn-secondary"><i class="fa-solid fa-user-pen"></i></a>
+                                    <a href="user-edit.php?id=<?= $row["user_id"] ?>" class="btn btn-outline-secondary"><i class="fa-solid fa-user-pen"></i></a>
                                 </div>
                                 <h2 class="h3 mt-3">收藏商品</h2>
                                 <?php if ($resultFavorite->num_rows > 0): ?>
@@ -389,8 +394,8 @@ if ($userCount > 0) {
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-secondary" href="login.html">Logout</a>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-outline-secondary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>

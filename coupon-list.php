@@ -11,19 +11,19 @@ $now = date("Y-m-d H:i:s");
 $sqlTimeCheck = "UPDATE coupon SET valid = 0 WHERE coupon_end_time < '$now' AND valid = 1";
 $conn->query($sqlTimeCheck);
 
-if(isset($_GET['valid'])){
+if (isset($_GET['valid'])) {
 
-$valid = $_GET["valid"];
+    $valid = $_GET["valid"];
 
-switch ($valid) {
-    case 1:
-        $valid_clause = "valid=1";
-        break;
-    case 0:
-        $valid_clause = "valid=0";
-        break;
-}
-}else{
+    switch ($valid) {
+        case 1:
+            $valid_clause = "valid=1";
+            break;
+        case 0:
+            $valid_clause = "valid=0";
+            break;
+    }
+} else {
     $valid_clause = "valid=1";
 }
 
@@ -178,14 +178,14 @@ $rowsCount = $result->num_rows;
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fa-solid fa-user fa-fw fas"></i>
+                    <i class="fa-solid fa-user fa-fw fas"></i>
                     <span>Users</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">使用者管理:</h6>
-                        <a class="collapse-item" href="buttons.html">使用者列表</a>
-                        <a class="collapse-item" href="cards.html">新增使用者</a>
+                        <a class="collapse-item" href="users.php">使用者列表</a>
+                        <a class="collapse-item" href="create-user.php">新增使用者</a>
                     </div>
                 </div>
             </li>
@@ -201,15 +201,14 @@ $rowsCount = $result->num_rows;
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">商品管理:</h6>
-                        <a class="collapse-item" href="utilities-color.html">商品列表</a>
-                        <a class="collapse-item" href="utilities-border.html">新增商品</a>
-                        <a class="collapse-item" href="utilities-animation.html">已下架商品列表</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <a class="collapse-item" href="product-list.php?valid=1">商品列表</a>
+                        <a class="collapse-item" href="create-product.php">新增商品</a>
+                        <a class="collapse-item" href="product-list.php?valid=0">已下架商品列表</a>
                     </div>
                 </div>
             </li>
 
-           
+
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -221,14 +220,14 @@ $rowsCount = $result->num_rows;
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">租賃管理:</h6>
-                        <a class="collapse-item" href="login.html">租賃列表</a>
-                        <a class="collapse-item" href="register.html">新增可租賃筆電</a>
-                        <a class="collapse-item" href="forgot-password.html">已下架租賃列表</a>                        
+                        <a class="collapse-item" href="topics/rental_form.php">租賃列表</a>
+                        <a class="collapse-item" href="topics/laptop_create.php">新增可租賃筆電</a>
+                        <a class="collapse-item" href="topics/laptop_soft_delete_list.php">已下架租賃列表</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->           
+            <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCoupon"
                     aria-expanded="true" aria-controls="collapseCoupon">
@@ -239,7 +238,7 @@ $rowsCount = $result->num_rows;
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">優惠券管理:</h6>
                         <a class="collapse-item" href="coupon-list.php">優惠券列表</a>
-                        <a class="collapse-item" href="coupon-list.php?p=1&order=1&valid=0">停用中優惠券</a>                        
+                        <a class="collapse-item" href="coupon-list.php?p=1&order=1&valid=0">停用中優惠券</a>
                         <a class="collapse-item" href="coupon-add.php">新增優惠券</a>
                     </div>
                 </div>
@@ -255,8 +254,8 @@ $rowsCount = $result->num_rows;
                 <div id="collapseArticle" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">文章管理:</h6>
-                        <a class="collapse-item" href="login.html">文章列表</a>
-                        <a class="collapse-item" href="register.html">新增文章</a>                                             
+                        <a class="collapse-item" href="article_manange.php">文章列表</a>
+                        <a class="collapse-item" href="article_add.php">新增文章</a>
                     </div>
                 </div>
             </li>
@@ -270,8 +269,8 @@ $rowsCount = $result->num_rows;
                 <div id="collapseEvent" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">活動管理:</h6>
-                        <a class="collapse-item" href="login.html">活動列表</a>
-                        <a class="collapse-item" href="register.html">新增活動</a>                                             
+                        <a class="collapse-item" href="events.php">活動列表</a>
+                        <a class="collapse-item" href="create_event.php">新增活動</a>
                     </div>
                 </div>
             </li>
@@ -284,7 +283,7 @@ $rowsCount = $result->num_rows;
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-            
+
 
         </ul>
         <!-- End of Sidebar -->
@@ -303,7 +302,7 @@ $rowsCount = $result->num_rows;
                         <i class="fa fa-bars"></i>
                     </button>
 
-                   
+
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -323,7 +322,7 @@ $rowsCount = $result->num_rows;
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -332,8 +331,8 @@ $rowsCount = $result->num_rows;
                             </div>
                         </li>
 
-                       
-                       
+
+
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -376,7 +375,7 @@ $rowsCount = $result->num_rows;
                 <!-- 主要頁面 -->
                 <div class="container-fluid">
                     <h1>優惠券</h1>
-                    <a href="coupon-add.php" class="btn btn-secondary mb-3"><i class="fa-solid fa-plus"></i>新增優惠券</a>
+                    <a href="coupon-add.php" class="btn btn-outline-secondary mb-3"><i class="fa-solid fa-plus"></i>新增優惠券</a>
                     <div class="py-2">
                         <form action="">
                             <div class="input-group mb-3">
@@ -390,15 +389,15 @@ $rowsCount = $result->num_rows;
                                 </div>
                                 <input type="search" class="form-control" name="search" placeholder="搜尋優惠券" value="<?php echo isset($_GET["search"]) ? $_GET["search"] : ""; ?>">
                                 <!-- <input type="hidden" name="valid" value="<?php echo isset($_GET["valid"]) ? $_GET["valid"] : "1"; ?>"> -->
-                                <button class="btn btn-secondary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </div>
                         </form>
                     </div>
                     <div class="py-2 d-flex justify-content-between">
                         <?php if (isset($_GET["search"])) : ?>
                             <div class="btn-grup">
-                                <a class="btn btn-secondary <?php if(!isset($_GET['valid'])) echo 'active'?>" href="coupon-list.php?type=<?= $type ?>&search=<?= $search ?>">
-                                <i class="fa-solid fa-globe"></i>全部
+                                <a class="btn btn-outline-secondary <?php if (!isset($_GET['valid'])) echo 'active' ?>" href="coupon-list.php?type=<?= $type ?>&search=<?= $search ?>">
+                                    <i class="fa-solid fa-globe"></i>全部
                                 </a>
                                 <a class="btn btn-success <?php if ($valid == 1) echo "active" ?>" href="coupon-list.php?type=<?= $type ?>&search=<?= $search ?>&valid=1">
                                     <i class="fa-solid fa-check"></i>有效中
@@ -419,24 +418,24 @@ $rowsCount = $result->num_rows;
                         <?php endif; ?>
                         <?php if (isset($_GET["p"])) : ?>
                             <div class="btn-group ">
-                                <a class="btn btn-secondary <?php if ($order == 1) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=1&valid=<?= $valid ?>">
+                                <a class="btn btn-outline-secondary <?php if ($order == 1) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=1&valid=<?= $valid ?>">
                                     <i class="fa-solid fa-arrow-down-1-9"></i>
                                 </a>
 
-                                <a class="btn btn-secondary <?php if ($order == 2) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=2&valid=<?= $valid ?>">
+                                <a class="btn btn-outline-secondary <?php if ($order == 2) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=2&valid=<?= $valid ?>">
                                     <i class="fa-solid fa-arrow-down-9-1"></i>
                                 </a>
-                                <a class="btn btn-secondary <?php if ($order == 3) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=3&valid=<?= $valid ?>">
+                                <a class="btn btn-outline-secondary <?php if ($order == 3) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=3&valid=<?= $valid ?>">
                                     <i class="fa-solid fa-arrow-down-a-z"></i>
                                 </a>
-                                <a class="btn btn-secondary <?php if ($order == 4) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=4&valid=<?= $valid ?>">
+                                <a class="btn btn-outline-secondary <?php if ($order == 4) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=4&valid=<?= $valid ?>">
                                     <i class="fa-solid fa-arrow-down-z-a"></i>
                                 </a>
                             </div>
                         <?php endif; ?>
                     </div>
                     <?php if (isset($_GET["search"])) : ?>
-                        <a href="coupon-list.php" class="btn btn-secondary mb-3">
+                        <a href="coupon-list.php" class="btn btn-outline-secondary mb-3">
                             <i class="fa-solid fa-arrow-rotate-left"></i>回到列表
                         </a>
                         <div class="alert alert-secondary" role="alert">
@@ -470,7 +469,7 @@ $rowsCount = $result->num_rows;
                                             <?php endif; ?>
                                         </td>
                                         <td class="text-center">
-                                            <a href="coupon.php?id=<?= $row['coupon_id']; ?>" class="btn btn-secondary">
+                                            <a href="coupon.php?id=<?= $row['coupon_id']; ?>" class="btn btn-outline-secondary">
                                                 <i class="fa-solid fa-eye"></i>優惠券內容
                                             </a>
                                         </td>
@@ -509,7 +508,7 @@ $rowsCount = $result->num_rows;
                     <?php else: ?>
                         <h2>目前沒有優惠券</h2>
                     <?php endif; ?>
-                    
+
 
                 </div>
                 <!-- /.container-fluid -->
@@ -551,7 +550,7 @@ $rowsCount = $result->num_rows;
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="login.html">Logout</a>
                 </div>
             </div>

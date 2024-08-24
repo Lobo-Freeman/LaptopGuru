@@ -24,12 +24,22 @@ $remained_address=$_POST["remained_address"];
 
 $sql="UPDATE users SET name='$name', phone='$phone', email='$email',gender='$gender' WHERE user_id=$id";
 
-$sqlAddress="INSERT INTO `addresses` ( `user_id`, `country`, `city`, `district`, `remained_address`) VALUES ('$id', '$country', '$city', '$district', '$remained_address');";
+$sqlCheckAddress="SELECT * FROM addresses WHERE user_id=$id";
+$resultCheckAddress=$conn->query($sqlCheckAddress);
 
-
-
+if($resultCheckAddress->num_rows>0){
+    $sqlAddress="UPDATE addresses SET country='$country', city='$city', district='$district', remained_address='$remained_address' WHERE user_id=$id";
+}else{
+    $sqlAddress="INSERT INTO `addresses` ( `user_id`, `country`, `city`, `district`, `remained_address`) VALUES ('$id', '$country', '$city', '$district', '$remained_address');";    
+}
 
 if ($conn->query($sql) === TRUE) {
+    echo "更新成功";
+} else {
+    echo "更新資料錯誤: " . $conn->error;
+}
+
+if ($conn->query($sqlAddress) === TRUE) {
     echo "更新成功";
 } else {
     echo "更新資料錯誤: " . $conn->error;

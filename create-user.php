@@ -71,10 +71,9 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">商品管理:</h6>
-                        <a class="collapse-item" href="utilities-color.html">商品列表</a>
-                        <a class="collapse-item" href="utilities-border.html">新增商品</a>
-                        <a class="collapse-item" href="utilities-animation.html">已下架商品列表</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <a class="collapse-item" href="product-list.php?valid=1">商品列表</a>
+                        <a class="collapse-item" href="create-product.php">新增商品</a>
+                        <a class="collapse-item" href="product-list.php?valid=0">已下架商品列表</a>
                     </div>
                 </div>
             </li>
@@ -91,9 +90,9 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">租賃管理:</h6>
-                        <a class="collapse-item" href="login.html">租賃列表</a>
-                        <a class="collapse-item" href="register.html">新增可租賃筆電</a>
-                        <a class="collapse-item" href="forgot-password.html">已下架租賃列表</a>
+                        <a class="collapse-item" href="topics/rental_form.php">租賃列表</a>
+                        <a class="collapse-item" href="topics/laptop_create.php">新增可租賃筆電</a>
+                        <a class="collapse-item" href="topics/laptop_soft_delete_list.php">已下架租賃列表</a>
                     </div>
                 </div>
             </li>
@@ -125,8 +124,8 @@
                 <div id="collapseArticle" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">文章管理:</h6>
-                        <a class="collapse-item" href="login.html">文章列表</a>
-                        <a class="collapse-item" href="register.html">新增文章</a>
+                        <a class="collapse-item" href="article_manange.php">文章列表</a>
+                        <a class="collapse-item" href="article_add.php">新增文章</a>
                     </div>
                 </div>
             </li>
@@ -140,8 +139,8 @@
                 <div id="collapseEvent" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">活動管理:</h6>
-                        <a class="collapse-item" href=" ">活動列表</a>
-                        <a class="collapse-item" href="register.html">新增活動</a>
+                        <a class="collapse-item" href="events.php">活動列表</a>
+                        <a class="collapse-item" href="create_event.php">新增活動</a>
                     </div>
                 </div>
             </li>
@@ -193,7 +192,7 @@
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -246,7 +245,7 @@
                 <!-- 主要頁面 -->
                 <div class="container-fluid">
                     <div class="py-2">
-                        <a class="btn btn-secondary" href="users.php" title="回使用者列表">
+                        <a class="btn btn-outline-secondary" href="users.php" title="回使用者列表">
                             <i class="fa-solid fa-arrow-rotate-left"></i>
                             回到使用者列表
                         </a>
@@ -276,7 +275,7 @@
                             <label class="form-label" for="email">Email</label>
                             <input type="email" class="form-control" name="email">
                         </div>
-                        <button class="btn btn-secondary" type="submit">送出</button>
+                        <button class="btn btn-outline-secondary" type="submit">送出</button>
                     </form>
                 </div>
                 <!-- /.container-fluid -->
@@ -318,8 +317,8 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-secondary" href="login.html">Logout</a>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-outline-secondary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>

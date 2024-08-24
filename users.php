@@ -130,10 +130,9 @@ if (isset($_GET["search"])) {
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">商品管理:</h6>
-                        <a class="collapse-item" href="utilities-color.html">商品列表</a>
-                        <a class="collapse-item" href="utilities-border.html">新增商品</a>
-                        <a class="collapse-item" href="utilities-animation.html">已下架商品列表</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <a class="collapse-item" href="product-list.php?valid=1">商品列表</a>
+                        <a class="collapse-item" href="create-product.php">新增商品</a>
+                        <a class="collapse-item" href="product-list.php?valid=0">已下架商品列表</a>
                     </div>
                 </div>
             </li>
@@ -150,9 +149,9 @@ if (isset($_GET["search"])) {
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">租賃管理:</h6>
-                        <a class="collapse-item" href="login.html">租賃列表</a>
-                        <a class="collapse-item" href="register.html">新增可租賃筆電</a>
-                        <a class="collapse-item" href="forgot-password.html">已下架租賃列表</a>
+                        <a class="collapse-item" href="topics/rental_form.php">租賃列表</a>
+                        <a class="collapse-item" href="topics/laptop_create.php">新增可租賃筆電</a>
+                        <a class="collapse-item" href="topics/laptop_soft_delete_list.php">已下架租賃列表</a>
                     </div>
                 </div>
             </li>
@@ -184,8 +183,8 @@ if (isset($_GET["search"])) {
                 <div id="collapseArticle" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">文章管理:</h6>
-                        <a class="collapse-item" href="login.html">文章列表</a>
-                        <a class="collapse-item" href="register.html">新增文章</a>
+                        <a class="collapse-item" href="article_manange.php">文章列表</a>
+                        <a class="collapse-item" href="article_add.php">新增文章</a>
                     </div>
                 </div>
             </li>
@@ -199,12 +198,11 @@ if (isset($_GET["search"])) {
                 <div id="collapseEvent" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">活動管理:</h6>
-                        <a class="collapse-item" href=" ">活動列表</a>
-                        <a class="collapse-item" href="register.html">新增活動</a>
+                        <a class="collapse-item" href="events.php">活動列表</a>
+                        <a class="collapse-item" href="create_event.php">新增活動</a>
                     </div>
                 </div>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -252,7 +250,7 @@ if (isset($_GET["search"])) {
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -306,12 +304,12 @@ if (isset($_GET["search"])) {
                 <div class="container-fluid">
                     <h1>使用者列表</h1>
                     <?php if (isset($_GET["search"])) : ?>
-                        <a class="btn btn-secondary mb-3" href="users.php" title="回使用者列表">
+                        <a class="btn btn-outline-secondary mb-3" href="users.php" title="回使用者列表">
                             <i class="fa-solid fa-arrow-rotate-left"></i>
                             回到使用者列表
                         </a>
                     <?php endif; ?>
-                    <a class="btn btn-secondary mb-3" href="create-user.php">
+                    <a class="btn btn-outline-secondary mb-3" href="create-user.php">
                         <i class="fa-solid fa-user-plus"></i>
                         新增使用者
                     </a>
@@ -319,28 +317,28 @@ if (isset($_GET["search"])) {
                         <form action="">
                             <div class="input-group">
                                 <input type="search" class="form-control" name="search" value="<?php echo isset($_GET["search"]) ? $_GET["search"] : "" ?>" placeholder="用account搜尋使用者">
-                                <button class="btn btn-secondary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </div>
                         </form>
                     </div>
                     <?php if (isset($_GET["p"])) : ?>
                         <div class="py-2 d-flex justify-content-end">
                             <div class="btn-group">
-                                <a class="btn btn-secondary 
+                                <a class="btn btn-outline-secondary
                     <?php if ($order == 1) echo "active" ?>" href="users.php?p=<?= $page ?>&order=1">
                                     <i class="fa-solid fa-arrow-down-1-9"></i>
                                 </a>
-                                <a class="btn btn-secondary
+                                <a class="btn btn-outline-secondary
                     <?php if ($order == 2) echo "active" ?>
                     " href="users.php?p=<?= $page ?>&order=2">
                                     <i class="fa-solid fa-arrow-down-9-1"></i>
                                 </a>
-                                <a class="btn btn-secondary
+                                <a class="btn btn-outline-secondary
                     <?php if ($order == 3) echo "active" ?>
                     " href="users.php?p=<?= $page ?>&order=3">
                                     <i class="fa-solid fa-arrow-down-a-z"></i>
                                 </a>
-                                <a class="btn btn-secondary
+                                <a class="btn btn-outline-secondary
                     <?php if ($order == 4) echo "active" ?>
                     " href="users.php?p=<?= $page ?>&order=4">
                                     <i class="fa-solid fa-arrow-down-z-a"></i>
@@ -372,7 +370,7 @@ if (isset($_GET["search"])) {
                                         <td><?= $user["email"] ?></td>
                                         <td><?= $user["phone"] ?></td>
                                         <td>
-                                            <a class="btn btn-secondary" href="user.php?id=<?= $user["user_id"] ?>"><i class="fa-solid fa-eye"></i></a>
+                                            <a class="btn btn-outline-secondary" href="user.php?id=<?= $user["user_id"] ?>"><i class="fa-solid fa-eye"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -453,8 +451,8 @@ if (isset($_GET["search"])) {
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-secondary" href="login.html">Logout</a>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-outline-secondary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>
