@@ -164,8 +164,14 @@ $eventCount = $result->num_rows;
                             <td><?= $event["event_type"] ?></td>
                             <td><?= $event["event_platform"] ?></td>
                             <td><?= $event["individual_or_team"] ?></td>
-                            <td><img class="img-fluid" src="../event_images/<?= $event["event_picture"] ?>" alt=""></td>
+
+                            <td><img class="img-fluid" src="event_images/<?= $event["event_picture"] ?>" alt=""></td>
                             <td><?= $event["apply_start_time"] ?><br><?= $event["apply_end_time"] ?></td>
+
+                            <td><img class="img-fluid" src="event_images/<?= $event["event_picture"] ?>" alt=""></td>
+                            <td><?= $event["apply_start_time"] ?></td>
+                            <td><?= $event["apply_end_time"] ?></td>
+
                             <td><?= $event["event_start_time"] ?></td>
                             <td><?= $event["maximum_people"] ?></td>
                             <td>

@@ -53,13 +53,78 @@ if(empty($article_introduction)){
     exit;
 }
 
-$article_images_thumbnail=$_POST["article_images_thumbnail"];
-$article_images_title=$_POST["article_images_title"];
+$article_images_thumbnail=$_FILES["article_images_thumbnail"];
+$article_images_title=$_FILES["article_images_title"];
 $article_video_title_url=$_POST["article_video_title_url"];
-$article_images_main=$_POST["article_images_main"];
-$article_images_content_1=$_POST["article_images_content_1"];
-$article_images_content_2=$_POST["article_images_content_2"];
-$article_images_content_3=$_POST["article_images_content_3"];
+$article_images_main=$_FILES["article_images_main"];
+$article_images_content_1=$_FILES["article_images_content_1"];
+$article_images_content_2=$_FILES["article_images_content_2"];
+$article_images_content_3=$_FILES["article_images_content_3"];
+
+
+// -------------------------------------------更改儲存圖片的名稱-------------------------------------------
+// -------------------------------------------更改儲存圖片的名稱-------------------------------------------
+// -------------------------------------------更改儲存圖片的名稱-------------------------------------------
+
+
+// -------------------------------------我寫的
+// if($_FILES["article_images_thumbnail"]["error"]==0){
+//     $filename=$_FILES["article_images_thumbnail"]["name"];
+//     $fileInfo=pathinfo($filename);
+//     $extension=$fileInfo["extension"];
+//     // echo $extension;
+//     // exit;
+
+//     $newFilename=time().".$extension";
+
+//     if(move_uploaded_file($_FILES["article_images_thumbnail"]["name"], "article_images/.$newFilename")){
+//         $sql="INSERT INTO article_management (article_images_thumbnail) VALUES ('$newFilename')";
+//         if ($conn->query($sql) === TRUE) {
+//             header("location: file-upload.php");
+//             exit;
+//          } else {
+//              echo "Error: " . $sql . "<br>" . $conn->error;
+//          }
+      
+//          echo "upload succss!";
+//      }else{
+//          echo "upload fail!";
+//      }
+//     }
+// -------------------------------------我寫的
+
+// -------------------------------------chatgpt修正後-------------------------------------
+if (isset($_FILES["article_images_thumbnail"]) && $_FILES["article_images_thumbnail"]["error"] == 0) {
+    $filename = $_FILES["article_images_thumbnail"]["name"];
+    $fileInfo = pathinfo($filename);
+    $extension = isset($fileInfo["extension"]) ? $fileInfo["extension"] : 'unknown'; // 确保扩展名存在
+
+    $newFilename = time() . ".$extension";
+    $targetFile = "article_images/" . $newFilename;
+
+    if (move_uploaded_file($_FILES["article_images_thumbnail"]["tmp_name"], $targetFile)) {
+        $sql = "INSERT INTO article_management (article_images_thumbnail) VALUES ('$newFilename')";
+
+
+        if ($conn->query($sql) === TRUE) {
+            header("Location: article_manange.php");
+            exit;
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    } else {
+        echo "Upload failed!";
+    }
+} else {
+    echo "File not uploaded or upload error!";
+}
+// -------------------------------------chatgpt修正後-------------------------------------
+
+// -------------------------------------------更改儲存圖片的名稱-------------------------------------------
+// -------------------------------------------更改儲存圖片的名稱-------------------------------------------
+// -------------------------------------------更改儲存圖片的名稱-------------------------------------------
+
+
 
 $article_text=$_POST["article_text"];
 if(empty($article_text)){

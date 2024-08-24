@@ -43,6 +43,7 @@ if ($eventCount > 0) {
 <body>
     <div class="container">
         <div class="row justify-content-center">
+
             <div class="col-lg-8">
                 <div class="event-card">
                     <?php if ($eventCount > 0) : ?>
@@ -119,6 +120,65 @@ if ($eventCount > 0) {
                         <div class="alert alert-warning">找不到活動</div>
                     <?php endif; ?>
                 </div>
+
+            <div class="col">
+                <?php if ($eventCount > 0) : ?>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>活動Id</th>
+                            <td><?= $row["event_id"] ?></td>
+                        </tr>
+                        <tr>
+                            <th>活動名稱</th>
+                            <td><?= $row["event_name"] ?></td>
+                        </tr>
+                        <tr>
+                            <th>活動種類</th>
+                            <td><?= $row["event_type"] ?></td>
+                        </tr><tr>
+                            <th>活動內容</th>
+                            <td><?= $row["event_content"] ?></td>
+                        </tr><tr>
+                            <th>活動平台</th>
+                            <td><?= $row["event_platform"] ?></td>
+                        </tr><tr>
+                            <th>個人or團隊</th>
+                            <td><?= $row["individual_or_team"] ?></td>
+                        </tr><tr>
+                            <th>活動照片</th>
+                            <td><img class="img-fluid" src="event_images/<?= $row['event_picture'] ?>" alt=""></td>
+                        </tr><tr>
+                            <th>報名開始時間</th>
+                            <td><?= $row["apply_start_time"] ?></td>
+                        </tr><tr>
+                            <th>報名結束時間</th>
+                            <td><?= $row["apply_end_time"] ?></td>
+                        </tr><tr>
+                            <th>活動開始時間</th>
+                            <td><?= $row["event_start_time"] ?></td>
+                        </tr>
+                        </tr><tr>
+                            <th>人數上限</th>
+                            <td><?= $row["maximum_people"] ?></td>
+                        </tr>
+                        <tr>
+                            <th>發起時間</th>
+                            <td><?= $row["created_at"] ?></td>
+                        </tr>
+                    </table>
+                    <div class="py-2">
+                        <a href="event_edit.php?event_id=<?= $row["event_id"] ?>" class="btn btn-secondary">
+                            <i class="fa-solid fa-user-pen"></i>
+                        </a>
+                    </div>
+
+
+
+
+                <?php else : ?>
+                    找不到使用者
+                <?php endif; ?>
+
             </div>
         </div>
     </div>

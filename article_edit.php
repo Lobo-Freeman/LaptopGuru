@@ -51,72 +51,73 @@ if ($articleCount > 0) {
 </head>
 
 <body>
-    <div class="container">
-        <div class="py-2">
-            <a class="btn btn-primary" href="article_detail.php?article_id=<?= $rows["article_id"] ?>" title="回文章列表"><i class="fa-solid fa-left-long"></i></a>
-        </div>
-        <div class="row">
+    <div class="container mb-5 mt-5">
+
+        <div class="row mt-3">
             <div class="col-lg-4">
                 <h1>修改資料</h1>
+                <div class="py-2 mt-5">
+                    <a class="btn btn-outline-secondary" href="article_detail.php?article_id=<?= $rows["article_id"] ?>" title="回文章列表"><i class="fa-solid fa-left-long"></i></a>
+                </div>
                 <?php if ($articleCount > 0) : ?>
                     <form action="doUpdateArticle.php" method="post">
                         <input type="hidden" name="article_id" value="<?= $rows["article_id"] ?>">
-                        <table class="table table-bordered table-form-control">
+                        <table class="table table-bordered table-form-control mt-5">
                             <tr>
-                                <th>article_id</th>
+                                <th class="text-nowrap">文章ID</th>
                                 <td class="table-form-control-td" type="hidden"><?= $rows["article_id"] ?></td>
                             </tr>
                             <tr>
-                                <th>article_created_time</th>
+                                <th class="text-nowrap">原文文章建立時間</th>
                                 <td class="table-form-control-td">
                                     <p>Please enter the date in the format: YYYY-MM-DD</p>
                                     <input type="text" class="form-control" name="article_created_time" value="<?= $rows["article_created_time"] ?>">
                                 </td>
                             </tr>
                             <tr>
-                                <th>article_brand</th>
+                                <th class="text-nowrap">文章品牌</th>
                                 <td class="table-form-control-td">
                                     <input type="text" class="form-control" name="article_brand" value="<?= $rows["article_brand"] ?>">
                                 </td>
                             </tr>
                             <tr>
-                                <th>article_type1</th>
+                                <th class="text-nowrap">文章類型1</th>
                                 <td class="table-form-control-td">
                                     <input type="text" class="form-control" name="article_type1" value="<?= $rows["article_type1"] ?>">
                                 </td>
                             </tr>
                             <tr>
-                                <th>article_type2</th>
+                                <th class="text-nowrap">文章類型2</th>
                                 <td class="table-form-control-td">
                                     <input type="text" class="form-control" name="article_type2" value="<?= $rows["article_type2"] ?>">
                                 </td>
                             </tr>
                             <tr>
-                                <th>article_type3</th>
+                                <th class="text-nowrap">文章類型3</th>
                                 <td class="table-form-control-td">
                                     <input type="text" class="form-control" name="article_type3" value="<?= $rows["article_type3"] ?>">
                                 </td>
                             </tr>
                             <tr>
-                                <th>article_type4</th>
+                                <th class="text-nowrap">文章類型4</th>
                                 <td class="table-form-control-td">
                                     <input type="text" class="form-control" name="article_type4" value="<?= $rows["article_type4"] ?>">
                                 </td>
                             </tr>
                             <tr>
-                                <th>article_url_address</th>
+                                <th class="text-nowrap">原文網址</th>
                                 <td class="table-form-control-td">
                                     <input type="text" class="form-control" name="article_url_address" value="<?= $rows["article_url_address"] ?>">
                                 </td>
                             </tr>
                             <tr>
-                                <th>article_introduction</th>
+                                <th class="text-nowrap">文章短介紹</th>
                                 <td class="table-form-control-td">
                                     <input type="text" class="form-control" name="article_introduction" value="<?= $rows["article_introduction"] ?>">
                                 </td>
                             </tr>
                             <tr>
-                                <th>article_images_thumbnail</th>
+                                <th class="text-nowrap">文章縮圖</th>
                                 <td class="table-form-control-td">
                                     <div class="mb-3">
                                         <label for="formFile" class="form-label"></label>
@@ -125,7 +126,7 @@ if ($articleCount > 0) {
                                 </td>
                             </tr>
                             <tr>
-                                <th>article_images_title</th>
+                                <th class="text-nowrap">文章圖片(標題)</th>
                                 <td class="table-form-control-td">
                                     <div class="mb-3">
                                         <label for="formFile" class="form-label"></label>
@@ -134,13 +135,13 @@ if ($articleCount > 0) {
                                 </td>
                             </tr>
                             <tr>
-                                <th>article_video_title_url</th>
+                                <th class="text-nowrap">文章影片網址</th>
                                 <td class="table-form-control-td">
                                     <input type="text" class="form-control" name="article_video_title_url" value="<?= $rows["article_video_title_url"] ?>">
                                 </td>
                             </tr>
                             <tr>
-                                <th>article_images_main</th>
+                                <th class="text-nowrap">文章圖片(主要)</th>
                                 <td class="table-form-control-td">
                                     <div class="mb-3">
                                         <label for="formFile" class="form-label"></label>
@@ -149,7 +150,7 @@ if ($articleCount > 0) {
                                 </td>
                             </tr>
                             <tr>
-                                <th>article_images_content_1</th>
+                                <th class="text-nowrap">文章圖片 (內文1)</th>
                                 <td class="table-form-control-td">
                                     <div class="mb-3">
                                         <label for="formFile" class="form-label"></label>
@@ -158,7 +159,7 @@ if ($articleCount > 0) {
                                 </td>
                             </tr>
                             <tr>
-                                <th>article_images_content_2</th>
+                                <th class="text-nowrap">文章圖片 (內文2)</th>
                                 <td class="table-form-control-td">
                                     <div class="mb-3">
                                         <label for="formFile" class="form-label"></label>
@@ -167,7 +168,7 @@ if ($articleCount > 0) {
                                 </td>
                             </tr>
                             <tr>
-                                <th>article_images_content_3</th>
+                                <th class="text-nowrap">文章圖片 (內文3)</th>
                                 <td class="table-form-control-td">
                                     <div class="mb-3">
                                         <label for="formFile" class="form-label"></label>
@@ -176,7 +177,7 @@ if ($articleCount > 0) {
                                 </td>
                             </tr>
                             <tr>
-                                <th>article_text</th>
+                                <th class="text-nowrap">文章內容</th>
                                 <td class="table-form-control-td">
                                     <textarea
                                         type="text"
@@ -192,18 +193,13 @@ if ($articleCount > 0) {
                         </table>
                         <div class="d-flex justify-content-between">
                             <button class="btn btn-secondary" type="submit">
-                                    <i class="fa-solid fa-floppy-disk"></i>送出
+                                <i class="fa-solid fa-floppy-disk"></i> 送出
                             </button>
                             <a href="doDeleteArticle.php?article_id=<?= $rows["article_id"] ?>" class="btn btn-danger">
-                                <i class="fa-solid fa-trash"></i>刪除
-                            </a>                           
+                                <i class="fa-solid fa-trash"></i> 刪除
+                            </a>
                         </div>
-                        
-
                     </form>
-
-                    
-
                 <?php else : ?>
                     文章不存在
                 <?php endif; ?>

@@ -78,10 +78,9 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">商品管理:</h6>
-                        <a class="collapse-item" href="utilities-color.html">商品列表</a>
-                        <a class="collapse-item" href="utilities-border.html">新增商品</a>
-                        <a class="collapse-item" href="utilities-animation.html">已下架商品列表</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <a class="collapse-item" href="product-list.php?valid=1">商品列表</a>
+                        <a class="collapse-item" href="create-product.php">新增商品</a>
+                        <a class="collapse-item" href="product-list.php?valid=0">已下架商品列表</a>
                     </div>
                 </div>
             </li>
@@ -132,8 +131,8 @@
                 <div id="collapseArticle" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">文章管理:</h6>
-                        <a class="collapse-item" href="login.html">文章列表</a>
-                        <a class="collapse-item" href="register.html">新增文章</a>                                             
+                        <a class="collapse-item" href="article_manange.php">文章列表</a>
+                        <a class="collapse-item" href="article_add.php">新增文章</a>                                             
                     </div>
                 </div>
             </li>
