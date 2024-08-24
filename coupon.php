@@ -228,7 +228,7 @@ str_replace('*', '', $row['coupon_discount']);
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -282,7 +282,7 @@ str_replace('*', '', $row['coupon_discount']);
                 <div class="container-fluid">
                     <?php include "modal.php"; ?>
                     <h1>優惠券</h1>
-                    <a href="coupon-list.php" class="btn btn-secondary mb-3">
+                    <a href="coupon-list.php" class="btn btn-outline-secondary mb-3">
                         <i class="fa-solid fa-arrow-rotate-left"></i>回到列表
                     </a>
                     <table class="table table-bordered">
@@ -340,7 +340,7 @@ str_replace('*', '', $row['coupon_discount']);
                         </thead>
                     </table>
                     <div class="d-flex justify-content-between">
-                        <a href="couponEdit.php?id=<?= $row["coupon_id"] ?>" class="btn btn-secondary">
+                        <a href="couponEdit.php?id=<?= $row["coupon_id"] ?>" class="btn btn-outline-secondary">
                             <i class="fa-solid fa-pen"></i>
                             編輯
                         </a>
@@ -350,7 +350,7 @@ str_replace('*', '', $row['coupon_discount']);
                                 停用
                             </a>
                         <?php elseif ($row['valid'] == 0): ?>
-                            <a href="doCouponRestart.php?id=<?= $row["coupon_id"] ?>" class="btn btn-secondary">
+                            <a href="doCouponRestart.php?id=<?= $row["coupon_id"] ?>" class="btn btn-success">
                                 <i class="fa-solid fa-retweet"></i>
                                 啟用
                             </a>
@@ -399,8 +399,8 @@ str_replace('*', '', $row['coupon_discount']);
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-secondary" href="login.html">Logout</a>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-outline-secondary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>

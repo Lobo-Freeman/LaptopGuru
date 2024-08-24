@@ -12,7 +12,10 @@ $images=$_POST["images"]; //new
 $model = $_POST["model"];
 $brand = $_POST["brand"];
 $price = $_POST["price"];
+$num = $_POST["num"];
 $created_at = date('Y-m-d H:i:s');
+
+
 
 // 檢查是否上傳新圖片
 if (isset($_FILES["images"]) && $_FILES["images"]["error"] == 0) {
@@ -39,8 +42,15 @@ if (isset($_FILES["images"]) && $_FILES["images"]["error"] == 0) {
     $event_picture = $original_images;
 }
 
+
+echo "接收到的品牌是： " . $brand;
+
+
 // SQL 更新語句
-$sql = "UPDATE rental SET images='$event_picture', model='$model', brand='$brand', price='$price', created_at='$created_at' WHERE id='$id'";
+// $sql = "UPDATE rental SET images='$event_picture', model='$model', brand='$brand', price='$price', created_at='$created_at' WHERE id='$id'";
+
+$sql = "UPDATE rental SET images='$event_picture', model='$model', brand='$brand', price='$price', num='$num', created_at='$created_at' WHERE id='$id'";
+
 
 if ($conn->query($sql) === TRUE) {
     echo "更新成功";

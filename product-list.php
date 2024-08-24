@@ -301,7 +301,7 @@ $result = $conn->query($sql);
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -357,9 +357,9 @@ $result = $conn->query($sql);
                     <h1 class="text-center">商品列表</h1>
                     <div class="py-2">
                         <?php if (isset($_GET["search"])) : ?>
-                            <a class="btn btn-secondary" href="product-list.php" title="回商品列表"><i class="fa-solid fa-arrow-left" title="回商品列表"></i></a>
+                            <a class="btn btn-outline-secondary" href="product-list.php" title="回商品列表"><i class="fa-solid fa-arrow-left" title="回商品列表"></i></a>
                         <?php endif; ?>
-                        <a class="btn btn-secondary" href="create-product.php" title="新增商品"><i class="fa-solid fa-square-plus"></i></i></a>
+                        <a class="btn btn-outline-secondary" href="create-product.php" title="新增商品"><i class="fa-solid fa-square-plus"></i></i></a>
                     </div>
                     <form>
                         <div class="input-group">
@@ -387,7 +387,7 @@ $result = $conn->query($sql);
                                 </select>
                             </div>
                             <input type="search" class="form-control" name="search" value="<?php echo isset($_GET["search"]) ? $_GET["search"] : "" ?>">
-                            <button class="btn btn-secondary" type="submit"><i class="fa-solid fa-search"></i></button>
+                            <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-search"></i></button>
                         </div>
 
                     </form>
@@ -578,8 +578,8 @@ $result = $conn->query($sql);
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-secondary" href="login.html">Logout</a>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-outline-secondary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>

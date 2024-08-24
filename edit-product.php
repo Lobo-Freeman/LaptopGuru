@@ -210,7 +210,7 @@ if (isset($_GET["product_id"])) {
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -268,7 +268,7 @@ if (isset($_GET["product_id"])) {
                     <div class="container">
                         <h1 class="text-center">編輯商品</h1>
                         <div class="py-2">
-                            <a class="btn btn-secondary" href="product-list.php"><i class="fa-solid fa-arrow-left" title="回商品列表"></i></a>
+                            <a class="btn btn-outline-secondary" href="product-list.php"><i class="fa-solid fa-arrow-left" title="回商品列表"></i></a>
                         </div>
 
 
@@ -281,16 +281,16 @@ if (isset($_GET["product_id"])) {
                                     if (is_array($row["product_img_path"])) {
                                         foreach ($row["product_img_path"] as $i => $img) {
                                             echo "<img id='oldimg[{$row["img_id"]}]' src='assets/$img'  class='product_img'/>";
-                                            // echo "<button type='button' class='btn btn-secondary delete_old_img' data-old_img='{$row["img_id"]}'>移除舊圖片</button>";
+                                            // echo "<button type='button' class='btn btn-outline-secondary delete_old_img' data-old_img='{$row["img_id"]}'>移除舊圖片</button>";
                                         }
                                     } else {
                                         echo "<img id='oldimg[{$row['img_id']}]' src='assets/{$row["product_img_path"]}'class='product_img'/>";
-                                        // echo "<button type='button' class='btn btn-secondary delete_old_img' data-old_img='{$row["img_id"]}'>移除舊圖片</button>";
+                                        // echo "<button type='button' class='btn btn-outline-secondary delete_old_img' data-old_img='{$row["img_id"]}'>移除舊圖片</button>";
                                     }
                                 }
                                 ?>
-                                <!-- <button type="button" class="btn btn-secondary" onclick="addImageFile()">+</button>
-                <button type="button" class="btn btn-secondary" onclick="removeImageFile()">-</button>
+                                <!-- <button type="button" class="btn btn-outline-secondary" onclick="addImageFile()">+</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="removeImageFile()">-</button>
                 <div id="add_image">
 
                 </div> -->
@@ -331,7 +331,7 @@ if (isset($_GET["product_id"])) {
                                 <label for="product_I/O" class="form-label">I/O埠</label>
                                 <textarea type="text" class="form-control" id="product_I_O" name="product_I_O" rows="5"><?php echo $row["product_I/O"]; ?></textarea>
                                 <!-- <button type="button" class="btn btn-primary" onclick="updateProduct();">更新</button> -->
-                                <button type="submit" class="btn btn-secondary">
+                                <button type="submit" class="btn btn-outline-secondary">
                                     送出
                                 </button>
                             </form>
@@ -377,8 +377,8 @@ if (isset($_GET["product_id"])) {
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-secondary" href="login.html">Logout</a>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-outline-secondary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>

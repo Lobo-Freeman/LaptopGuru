@@ -231,7 +231,7 @@ if ($userCount > 0) {
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -285,7 +285,7 @@ if ($userCount > 0) {
                 <div class="container-fluid">
 
                     <div class="py-2">
-                        <a class="btn btn-secondary" href="users.php" title="回使用者列表">
+                        <a class="btn btn-outline-secondary" href="users.php" title="回使用者列表">
                             <i class="fa-solid fa-arrow-rotate-left"></i>
                             回到使用者列表
                         </a>
@@ -332,7 +332,7 @@ if ($userCount > 0) {
                                     </tr>
                                 </table>
                                 <div class="">
-                                    <a href="user-edit.php?id=<?= $row["user_id"] ?>" class="btn btn-secondary"><i class="fa-solid fa-user-pen"></i></a>
+                                    <a href="user-edit.php?id=<?= $row["user_id"] ?>" class="btn btn-outline-secondary"><i class="fa-solid fa-user-pen"></i></a>
                                 </div>
                                 <h2 class="h3 mt-3">收藏商品</h2>
                                 <?php if ($resultFavorite->num_rows > 0): ?>
@@ -394,8 +394,8 @@ if ($userCount > 0) {
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-secondary" href="login.html">Logout</a>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-outline-secondary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>

@@ -1,0 +1,47 @@
+:root {
+    --mainColor: #95acbe;
+}
+
+.bg-main {
+    background-color: var(--mainColor);
+}
+
+body {
+    font-family: "Noto Sans TC", sans-serif;
+    color: #676767;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #676767;
+    /* 自訂背景色 */
+    border-color: #8E8E8E;
+    /* 自訂邊框顏色 */
+    color: white;
+    /* 自訂文字顏色 */
+}
+
+.pagination .page-item .page-link {
+    color: #8E8E8E;
+    /* 自訂非活動頁面連結顏色 */
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: #8E8E8E;
+    /* 自訂滑鼠懸停時的背景色 */
+    border-color: #8E8E8E;
+    /* 自訂滑鼠懸停時的邊框顏色 */
+    color: white;
+    /* 自訂滑鼠懸停時的文字顏色 */
+}
+
+.pagination .page-item .page-link:focus {
+    outline: none;
+    /* 取消藍色邊框 */
+    box-shadow: none;
+    /* 取消陰影效果 */
+}
+
+.price-input {
+    width: 100px;
+    height: 30px;
+}

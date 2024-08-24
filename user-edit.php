@@ -222,7 +222,7 @@ if ($userCount > 0) {
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -275,7 +275,7 @@ if ($userCount > 0) {
                 <!-- 主要頁面 -->
                 <div class="container-fluid">
                     <div class="pt-5 pb-3">
-                        <a class="btn btn-secondary mb-3" href="user.php?id=<?= $user["user_id"] ?>" title="回使用者"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+                        <a class="btn btn-outline-secondary mb-3" href="user.php?id=<?= $user["user_id"] ?>" title="回使用者"><i class="fa-solid fa-arrow-rotate-left"></i></a>
                     </div>
                     <div class="row ">
 
@@ -354,7 +354,7 @@ if ($userCount > 0) {
                                 <a class="btn btn-danger" href="doDeleteUser.php?id=<?= $user["user_id"] ?>">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
-                                <button class="btn btn-secondary" type="submit">
+                                <button class="btn btn-outline-secondary" type="submit">
                                     <i class="fa-solid fa-floppy-disk"></i>
                                 </button>
 
@@ -375,7 +375,7 @@ if ($userCount > 0) {
                                             </td>
                                         </tr>
                                     </table>
-                                    <button class="btn btn-secondary mb-3" type="submit">送出</button>
+                                    <button class="btn btn-outline-secondary mb-3" type="submit">送出</button>
                                 </form>
                             <?php endif; ?>
                     </div>
@@ -428,8 +428,8 @@ if ($userCount > 0) {
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-secondary" href="login.html">Logout</a>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-outline-secondary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>

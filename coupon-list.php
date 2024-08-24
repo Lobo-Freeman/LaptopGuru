@@ -322,7 +322,7 @@ $rowsCount = $result->num_rows;
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -375,7 +375,7 @@ $rowsCount = $result->num_rows;
                 <!-- 主要頁面 -->
                 <div class="container-fluid">
                     <h1>優惠券</h1>
-                    <a href="coupon-add.php" class="btn btn-secondary mb-3"><i class="fa-solid fa-plus"></i>新增優惠券</a>
+                    <a href="coupon-add.php" class="btn btn-outline-secondary mb-3"><i class="fa-solid fa-plus"></i>新增優惠券</a>
                     <div class="py-2">
                         <form action="">
                             <div class="input-group mb-3">
@@ -389,14 +389,14 @@ $rowsCount = $result->num_rows;
                                 </div>
                                 <input type="search" class="form-control" name="search" placeholder="搜尋優惠券" value="<?php echo isset($_GET["search"]) ? $_GET["search"] : ""; ?>">
                                 <!-- <input type="hidden" name="valid" value="<?php echo isset($_GET["valid"]) ? $_GET["valid"] : "1"; ?>"> -->
-                                <button class="btn btn-secondary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </div>
                         </form>
                     </div>
                     <div class="py-2 d-flex justify-content-between">
                         <?php if (isset($_GET["search"])) : ?>
                             <div class="btn-grup">
-                                <a class="btn btn-secondary <?php if (!isset($_GET['valid'])) echo 'active' ?>" href="coupon-list.php?type=<?= $type ?>&search=<?= $search ?>">
+                                <a class="btn btn-outline-secondary <?php if (!isset($_GET['valid'])) echo 'active' ?>" href="coupon-list.php?type=<?= $type ?>&search=<?= $search ?>">
                                     <i class="fa-solid fa-globe"></i>全部
                                 </a>
                                 <a class="btn btn-success <?php if ($valid == 1) echo "active" ?>" href="coupon-list.php?type=<?= $type ?>&search=<?= $search ?>&valid=1">
@@ -418,24 +418,24 @@ $rowsCount = $result->num_rows;
                         <?php endif; ?>
                         <?php if (isset($_GET["p"])) : ?>
                             <div class="btn-group ">
-                                <a class="btn btn-secondary <?php if ($order == 1) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=1&valid=<?= $valid ?>">
+                                <a class="btn btn-outline-secondary <?php if ($order == 1) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=1&valid=<?= $valid ?>">
                                     <i class="fa-solid fa-arrow-down-1-9"></i>
                                 </a>
 
-                                <a class="btn btn-secondary <?php if ($order == 2) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=2&valid=<?= $valid ?>">
+                                <a class="btn btn-outline-secondary <?php if ($order == 2) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=2&valid=<?= $valid ?>">
                                     <i class="fa-solid fa-arrow-down-9-1"></i>
                                 </a>
-                                <a class="btn btn-secondary <?php if ($order == 3) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=3&valid=<?= $valid ?>">
+                                <a class="btn btn-outline-secondary <?php if ($order == 3) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=3&valid=<?= $valid ?>">
                                     <i class="fa-solid fa-arrow-down-a-z"></i>
                                 </a>
-                                <a class="btn btn-secondary <?php if ($order == 4) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=4&valid=<?= $valid ?>">
+                                <a class="btn btn-outline-secondary <?php if ($order == 4) echo "active" ?>" href="coupon-list.php?p=<?= $page ?>&order=4&valid=<?= $valid ?>">
                                     <i class="fa-solid fa-arrow-down-z-a"></i>
                                 </a>
                             </div>
                         <?php endif; ?>
                     </div>
                     <?php if (isset($_GET["search"])) : ?>
-                        <a href="coupon-list.php" class="btn btn-secondary mb-3">
+                        <a href="coupon-list.php" class="btn btn-outline-secondary mb-3">
                             <i class="fa-solid fa-arrow-rotate-left"></i>回到列表
                         </a>
                         <div class="alert alert-secondary" role="alert">
@@ -469,7 +469,7 @@ $rowsCount = $result->num_rows;
                                             <?php endif; ?>
                                         </td>
                                         <td class="text-center">
-                                            <a href="coupon.php?id=<?= $row['coupon_id']; ?>" class="btn btn-secondary">
+                                            <a href="coupon.php?id=<?= $row['coupon_id']; ?>" class="btn btn-outline-secondary">
                                                 <i class="fa-solid fa-eye"></i>優惠券內容
                                             </a>
                                         </td>
@@ -550,7 +550,7 @@ $rowsCount = $result->num_rows;
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="login.html">Logout</a>
                 </div>
             </div>

@@ -192,7 +192,7 @@
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -245,7 +245,7 @@
                 <!-- 主要頁面 -->
                 <div class="container-fluid">
                     <div class="py-2">
-                        <a class="btn btn-secondary" href="users.php" title="回使用者列表">
+                        <a class="btn btn-outline-secondary" href="users.php" title="回使用者列表">
                             <i class="fa-solid fa-arrow-rotate-left"></i>
                             回到使用者列表
                         </a>
@@ -275,7 +275,7 @@
                             <label class="form-label" for="email">Email</label>
                             <input type="email" class="form-control" name="email">
                         </div>
-                        <button class="btn btn-secondary" type="submit">送出</button>
+                        <button class="btn btn-outline-secondary" type="submit">送出</button>
                     </form>
                 </div>
                 <!-- /.container-fluid -->
@@ -317,8 +317,8 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-secondary" href="login.html">Logout</a>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-outline-secondary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>

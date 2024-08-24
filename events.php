@@ -269,7 +269,7 @@ $eventCount = $result->num_rows;
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -324,12 +324,12 @@ $eventCount = $result->num_rows;
                     <h1>活動列表</h1>
                     <div class="py-2">
                         <?php if (isset($_GET["search"])) : ?>
-                            <a href="events.php" class="btn btn-secondary">
+                            <a href="events.php" class="btn btn-outline-secondary">
                                 <i class="fa-solid fa-rotate-left"></i>
                                 活動列表
                             </a>
                         <?php endif; ?>
-                        <a href="create_event.php" class="btn btn-secondary">
+                        <a href="create_event.php" class="btn btn-outline-secondary">
                             <i class="fa-solid fa-user-plus fa-fw"></i>
                             新增活動
                         </a>
@@ -338,35 +338,35 @@ $eventCount = $result->num_rows;
                         <form action="">
                             <div class="input-group mb-3">
                                 <input type="search" class="form-control" name="search" placeholder="搜尋活動" value="<?php echo isset($_GET["search"]) ? $_GET["search"] : ""; ?>">
-                                <button class="btn btn-secondary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </div>
                         </form>
                     </div>
                     <?php if (isset($_GET["p"])) : ?>
                         <div class="py-2 d-flex justify-content-between">
                             <div class="btn-group">
-                                <a class="btn btn-secondary <?php echo (!isset($_GET["filter"]) || $_GET["filter"] == "") ? "active" : ""; ?>" href="events.php?p=<?= $page ?>&order=<?= $order ?>">
+                                <a class="btn btn-outline-secondary <?php echo (!isset($_GET["filter"]) || $_GET["filter"] == "") ? "active" : ""; ?>" href="events.php?p=<?= $page ?>&order=<?= $order ?>">
                                     全部
                                 </a>
-                                <a class="btn btn-secondary <?php echo (isset($_GET["filter"]) && $_GET["filter"] == "individual") ? "active" : ""; ?>" href="events.php?p=<?= $page ?>&order=<?= $order ?>&filter=individual">
+                                <a class="btn btn-outline-secondary <?php echo (isset($_GET["filter"]) && $_GET["filter"] == "individual") ? "active" : ""; ?>" href="events.php?p=<?= $page ?>&order=<?= $order ?>&filter=individual">
                                     個人
                                 </a>
-                                <a class="btn btn-secondary <?php echo (isset($_GET["filter"]) && $_GET["filter"] == "team") ? "active" : ""; ?>" href="events.php?p=<?= $page ?>&order=<?= $order ?>&filter=team">
+                                <a class="btn btn-outline-secondary <?php echo (isset($_GET["filter"]) && $_GET["filter"] == "team") ? "active" : ""; ?>" href="events.php?p=<?= $page ?>&order=<?= $order ?>&filter=team">
                                     團隊
                                 </a>
                             </div>
                             <div class="btn-group">
-                                <a class="btn btn-secondary <?php if ($order == 1) echo "active" ?>" href="events.php?p=<?= $page ?>&order=1">
+                                <a class="btn btn-outline-secondary <?php if ($order == 1) echo "active" ?>" href="events.php?p=<?= $page ?>&order=1">
                                     ID &nbsp; <i class="fa-solid fa-arrow-down"></i>
                                 </a>
 
-                                <a class="btn btn-secondary <?php if ($order == 2) echo "active" ?>" href="events.php?p=<?= $page ?>&order=2">
+                                <a class="btn btn-outline-secondary <?php if ($order == 2) echo "active" ?>" href="events.php?p=<?= $page ?>&order=2">
                                     ID &nbsp; <i class="fa-solid fa-arrow-up"></i>
                                 </a>
-                                <a class="btn btn-secondary <?php if ($order == 3) echo "active" ?>" href="events.php?p=<?= $page ?>&order=3">
+                                <a class="btn btn-outline-secondary <?php if ($order == 3) echo "active" ?>" href="events.php?p=<?= $page ?>&order=3">
                                     時間 &nbsp; <i class="fa-solid fa-arrow-down"></i>
                                 </a>
-                                <a class="btn btn-secondary <?php if ($order == 4) echo "active" ?>" href="events.php?p=<?= $page ?>&order=4">
+                                <a class="btn btn-outline-secondary <?php if ($order == 4) echo "active" ?>" href="events.php?p=<?= $page ?>&order=4">
                                     時間 &nbsp; <i class="fa-solid fa-arrow-up"></i>
                                 </a>
                             </div>
@@ -406,10 +406,10 @@ $eventCount = $result->num_rows;
                                         <td><?= $event["event_start_time"] ?></td>
                                         <td><?= $event["maximum_people"] ?></td>
                                         <td>
-                                            <a href="event.php?event_id=<?= $event["event_id"] ?>" class="btn btn-secondary d-block mb-2">
+                                            <a href="event.php?event_id=<?= $event["event_id"] ?>" class="btn btn-outline-secondary d-block mb-2">
                                                 <i class="fa-solid fa-eye fa-fw"></i>
                                             </a>
-                                            <a href="event_edit.php?event_id=<?= $event["event_id"] ?>" class="btn btn-secondary d-block">
+                                            <a href="event_edit.php?event_id=<?= $event["event_id"] ?>" class="btn btn-outline-secondary d-block">
                                                 <i class="fa-solid fa-pen"></i>
                                             </a>
                                         </td>
@@ -485,8 +485,8 @@ $eventCount = $result->num_rows;
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-secondary" href="login.html">Logout</a>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-outline-secondary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>

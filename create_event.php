@@ -196,7 +196,7 @@
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -249,7 +249,7 @@
                 <!-- 主要頁面 -->
                 <div class="container-fluid">
                     <div class="mb-4">
-                        <a href="events.php" class="btn btn-secondary">
+                        <a href="events.php" class="btn btn-outline-secondary">
                             <i class="fa-solid fa-left-long"></i> 返回活動列表
                         </a>
                     </div>
@@ -305,7 +305,7 @@
                             <label class="form-label" for="maximum_people">人數上限</label>
                             <input type="number" class="form-control" name="maximum_people" id="maximum_people" required>
                         </div>
-                        <button type="submit" class="btn btn-secondary">送出</button>
+                        <button type="submit" class="btn btn-outline-secondary">送出</button>
                     </form>
 
 
@@ -350,8 +350,8 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-secondary" href="login.html">Logout</a>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-outline-secondary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>

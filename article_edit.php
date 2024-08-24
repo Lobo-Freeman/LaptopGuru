@@ -226,7 +226,7 @@ if ($articleCount > 0) {
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -417,7 +417,7 @@ if ($articleCount > 0) {
                                         </tr>
                                     </table>
                                     <div class="d-flex justify-content-between">
-                                        <button class="btn btn-secondary" type="submit">
+                                        <button class="btn btn-outline-secondary" type="submit">
                                             <i class="fa-solid fa-floppy-disk"></i> 送出
                                         </button>
                                         <a href="doDeleteArticle.php?article_id=<?= $rows["article_id"] ?>" class="btn btn-danger">
@@ -472,8 +472,8 @@ if ($articleCount > 0) {
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-secondary" href="login.html">Logout</a>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-outline-secondary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>

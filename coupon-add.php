@@ -201,7 +201,7 @@ session_start();
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -256,7 +256,7 @@ session_start();
 
                     <?php include "modal.php"; ?>
                     <h1>新增優惠券</h1>
-                    <a href="coupon-list.php" class="btn btn-secondary mb-3">
+                    <a href="coupon-list.php" class="btn btn-outline-secondary mb-3">
                         <i class="fa-solid fa-arrow-rotate-left"></i>回到列表
                     </a>
                     <form action="doAddCoupon.php" method="post">
@@ -266,7 +266,7 @@ session_start();
                             <div>
                                 <small class="text-muted">請輸入6~20位數字或英文</small>
                             </div>
-                            <button type="button" class="btn btn-secondary mt-2" id="random">隨機產生優惠券代碼</button>
+                            <button type="button" class="btn btn-outline-secondary mt-2" id="random">隨機產生優惠券代碼</button>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="coupon_content">優惠券內容</label>
@@ -302,7 +302,7 @@ session_start();
                         </div>
                         <button
                             type="submit"
-                            class="btn btn-secondary">
+                            class="btn btn-outline-secondary">
                             送出
                         </button>
                     </form>
@@ -349,8 +349,8 @@ session_start();
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-secondary" href="login.html">Logout</a>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-outline-secondary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>

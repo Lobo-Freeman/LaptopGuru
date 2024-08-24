@@ -200,7 +200,7 @@
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-secondary" type="button">
+                                            <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -254,7 +254,7 @@
                     <div class="container">
                         <h1 class="text-center">新增商品</h1>
                         <div class="py-2">
-                            <a class="btn btn-secondary" href="product-list.php"><i class="fa-solid fa-arrow-left" title="回商品列表"></i></a>
+                            <a class="btn btn-outline-secondary" href="product-list.php"><i class="fa-solid fa-arrow-left" title="回商品列表"></i></a>
                         </div>
 
 
@@ -263,8 +263,8 @@
                                 <label for="product_name">商品圖片</label>
 
 
-                                <!-- <button type="button" class="btn btn-secondary" onclick="addImageFile()">+</button>
-                <button type="button" class="btn btn-secondary" onclick="removeImageFile()">-</button>
+                                <!-- <button type="button" class="btn btn-outline-secondary" onclick="addImageFile()">+</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="removeImageFile()">-</button>
                 <div id="add_image">
 
                 </div> -->
@@ -304,7 +304,7 @@
                                 <textarea type="text" class="form-control" id="product_I_O" name="product_I_O" rows="5"></textarea>
 
                                 <!-- <button type="button" class="btn btn-primary" onclick="updateProduct();">更新</button> -->
-                                <button type="submit" class="btn btn-secondary">
+                                <button type="submit" class="btn btn-outline-secondary">
                                     送出
                                 </button>
                             </form>
@@ -350,8 +350,8 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-secondary" href="login.html">Logout</a>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-outline-secondary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>

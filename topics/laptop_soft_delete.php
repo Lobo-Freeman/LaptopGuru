@@ -16,9 +16,9 @@ $sql = "UPDATE rental SET state = 'No' WHERE id=$id";
 
 if ($conn->query($sql) === TRUE) {
     echo "刪除成功";
-   } else {
+} else {
     echo "刪除錯誤: " . $conn->error;
-   }
+}
 
 header("location: rental_form.php");
 

@@ -39,122 +39,426 @@ if ($laptopCounts > 0) {
         rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossorigin="anonymous" />
-    <?php include("../topics/css.php") ?>
+    <?php include("css.php") ?>
 </head>
 
-<body>
-    <div class="container ">
-        <h2 class="text-center mt-3">資料修改</h2>
-        <div class="py-3">
-            <a class="btn btn-outline-secondary" href="laptop_content.php?id=<?= $row["id"] ?>" title="回租賃商品內容">
-                <i class="fa-solid fa-circle-chevron-left"></i>
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-main sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="front.php">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">LaptopGuru</div>
             </a>
-        </div>
-        <?php if ($laptopCounts > 0) : ?>
 
-            <!--action 表單提交時，數據應該發送到哪裡
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="front.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>首頁</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fa-solid fa-user fa-fw fas"></i>
+                    <span>Users</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">使用者管理:</h6>
+                        <a class="collapse-item" href="../users.php">使用者列表</a>
+                        <a class="collapse-item" href="../create-user.php">新增使用者</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fa-solid fa-shop fa-fw fas"></i>
+                    <span>Products</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">商品管理:</h6>
+                        <a class="collapse-item" href="../product-list.php?valid=1">商品列表</a>
+                        <a class="collapse-item" href="../create-product.php">新增商品</a>
+                        <a class="collapse-item" href="../product-list.php?valid=0">已下架商品列表</a>
+                    </div>
+                </div>
+            </li>
+
+
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-laptop fa-solid"></i>
+                    <span>Rental</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">租賃管理:</h6>
+                        <a class="collapse-item" href="rental_form.php">租賃列表</a>
+                        <a class="collapse-item" href="laptop_create.php">新增可租賃筆電</a>
+                        <a class="collapse-item" href="laptop_soft_delete_list.php">已下架租賃列表</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCoupon"
+                    aria-expanded="true" aria-controls="collapseCoupon">
+                    <i class="fa-solid fa-ticket fas fa-fw"></i>
+                    <span>Coupon</span>
+                </a>
+                <div id="collapseCoupon" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">優惠券管理:</h6>
+                        <a class="collapse-item" href="../coupon-list.php">優惠券列表</a>
+                        <a class="collapse-item" href="../coupon-list.php?p=1&order=1&valid=0">停用中優惠券</a>
+                        <a class="collapse-item" href="../coupon-add.php">新增優惠券</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseArticle"
+                    aria-expanded="true" aria-controls="collapseArticle">
+                    <i class="fa-solid fa-book fas fa-fw"></i>
+                    <span>Article</span>
+                </a>
+                <div id="collapseArticle" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">文章管理:</h6>
+                        <a class="collapse-item" href="../article_manange.php">文章列表</a>
+                        <a class="collapse-item" href="../article_add.php">新增文章</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvent"
+                    aria-expanded="true" aria-controls="collapseEvent">
+                    <i class="fa-solid fa-calendar-days fas fa-fw"></i>
+                    <span>Event</span>
+                </a>
+                <div id="collapseEvent" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">活動管理:</h6>
+                        <a class="collapse-item" href="../events.php">活動列表</a>
+                        <a class="collapse-item" href="../create_event.php">新增活動</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-secondary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+
+
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <!-- <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a> -->
+                                <!-- <div class="dropdown-divider"></div> -->
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- 主要頁面 -->
+                <div class="container-fluid">
+                    <h2 class="text-center mt-3">資料修改</h2>
+                    <div class="py-3">
+                        <a class="btn btn-outline-secondary" href="laptop_content.php?id=<?= $row["id"] ?>" title="回租賃商品內容">
+                            <i class="fa-solid fa-circle-chevron-left"></i>
+                        </a>
+                    </div>
+                    <?php if ($laptopCounts > 0) : ?>
+
+                        <!--action 表單提交時，數據應該發送到哪裡
                     表單提交時使用的 HTTP 方法。 GET(拿東西) 或 POST(傳東西)-->
-            <form action="laptop_update.php" method="post" enctype="multipart/form-data">
+                        <form action="laptop_update.php" method="POST" enctype="multipart/form-data">
 
-                <table class="table table-bordered">
-                    <!--將筆電的 ID 值隨表單一同提交-->
-                    <input type="hidden" name="id" value="<?= $row["id"] ?>">
-                    <tr>
-                        <td>id</td>
-                        <td>
-                            <?= $row["id"] ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>型號</td>
-                        <td>
-                            <input type="text" class="form-control" name="model" value="<?= $row["model"] ?>">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>品牌</td>
-                        <td>
-                            <select class="form-select" name="brand" id="brand">
-                                <option value="MSI">MSI</option>
-                                <option value="ROG">ROG</option>
-                                <option value="HP">HP</option>
-                                <option value="技嘉">技嘉</option>
-                                <option value="ASUS">ASUS</option>
-                                <option value="Acer">Acer</option>
-                                <option value="DELL">DELL</option>
-                                <option value="Razer">Razer</option>
-                            </select>
-                        </td>
-                    </tr>
+                            <table class="table table-bordered">
+                                <!--將筆電的 ID 值隨表單一同提交-->
+                                <input type="hidden" name="id" value="<?= $row["id"] ?>">
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                        <?= $row["id"] ?>
+                                    </td>
+                                </tr>
+                                <?php if (isset($_GET)) ?>
+                                <tr>
+                                    <td>型號</td>
+                                    <td>
+                                        <input type="text" class="form-control" name="model" value="<?= $row["model"] ?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>品牌</td>
+                                    <td>
+                                        <select class="form-select" name="brand" id="brand">
+                                            <option value="MSI" <?= $row['brand'] === 'MSI' ? 'selected' : '' ?>>MSI</option>
+                                            <option value="ROG" <?= $row['brand'] === 'ROG' ? 'selected' : '' ?>>ROG</option>
+                                            <option value="HP" <?= $row['brand'] === 'HP' ? 'selected' : '' ?>>HP</option>
+                                            <option value="技嘉" <?= $row['brand'] === '技嘉' ? 'selected' : '' ?>>技嘉</option>
+                                            <option value="ASUS" <?= $row['brand'] === 'ASUS' ? 'selected' : '' ?>>ASUS</option>
+                                            <option value="Acer" <?= $row['brand'] === 'Acer' ? 'selected' : '' ?>>Acer</option>
+                                            <option value="DELL" <?= $row['brand'] === 'DELL' ? 'selected' : '' ?>>DELL</option>
+                                            <option value="Razer" <?= $row['brand'] === 'Razer' ? 'selected' : '' ?>>Razer</option>
+                                        </select>
 
-                    <?php if (isset($_GET)) ?>
-                    <tr>
-                        <td>價格</td>
-                        <td>
-                            <input type="text" class="form-control" name="price" value="<?= $row["price"] ?>">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>數量</td>
-                        <td>
-                            <input type="text" class="form-control" name="num" value="<?= $row["num"] ?>">
-                        </td>
-                    </tr>
-                    <input type="hidden" name="created_at" value="<?= $row["created_at"] ?>">
-                    <tr>
-                        <td>時間</td>
-                        <td>
-                            <?= $row["created_at"] ?>
-                        </td>
-                    </tr>
+                                    </td>
+                                </tr>
 
-
-
-                    <tr>
-                        <td>圖片</td>
-                        <td>
-                            <img src="/topics/image/<?= $row['images'] ?>" alt="<?= $row['model'] ?>" width="100">
-                            <input type="hidden" name="original_images" value="<?= $row['images'] ?>">
-                            <input class="form-control" type="file" id="images" name="images">
-
-                            <!-- 顯示當前圖片（如果存在） -->
-                            <?php if (!empty($row["images"])): ?>
-                                <img class="img-fluid mt-2" src="/topics/image/<?= $row['images'] ?>" alt="Current Event Picture" style="max-width: 200px;">
-                                <p class="mt-1">當前圖片: <?= $row['images'] ?></p>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
+                                <tr>
+                                    <td>價格</td>
+                                    <td>
+                                        <input type="text" class="form-control" name="price" value="<?= $row["price"] ?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>數量</td>
+                                    <td>
+                                        <input type="text" class="form-control" name="num" value="<?= $row["num"] ?>">
+                                    </td>
+                                </tr>
+                                <input type="hidden" name="created_at" value="<?= $row["created_at"] ?>">
+                                <tr>
+                                    <td>時間</td>
+                                    <td>
+                                        <?= $row["created_at"] ?>
+                                    </td>
+                                </tr>
 
 
 
-                    <tr>
-                        <td colspan="2">
-                            <!-- 上傳按鈕 -->
-                            <button type="submit" class="btn btn-outline-secondary rounded-pill">
-                                <i class="fa-solid fa-floppy-disk me-2"></i>儲存
-                            </button>
-                        </td>
-                    </tr>
-                </table>
-            </form>
+                                <tr>
+                                    <td>圖片</td>
+                                    <td>
+                                        <img src="image/<?= $row['images'] ?>" alt="<?= $row['model'] ?>" width="100">
+                                        <input type="hidden" name="original_images" value="<?= $row['images'] ?>">
+                                        <input class="form-control" type="file" id="images" name="images">
+
+                                        <!-- 顯示當前圖片（如果存在） -->
+                                        <?php if (!empty($row["images"])): ?>
+                                            <img class="img-fluid mt-2" src="image/<?= $row['images'] ?>" alt="Current Event Picture" style="max-width: 200px;">
+                                            <p class="mt-1">當前圖片: <?= $row['images'] ?></p>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+
+
+
+                                <tr>
+                                    <td colspan="2">
+                                        <!-- 上傳按鈕 -->
+                                        <button type="submit" class="btn btn-outline-secondary rounded-pill">
+                                            <i class="fa-solid fa-floppy-disk me-2"></i>儲存
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
 
 
 
 
-            <!-- <div class="py-2">
+                        <!-- <div class="py-2">
                     <button type="submit" class="btn btn-outline-secondary rounded-pill">
                         <i class="fa-solid fa-floppy-disk me-2"></i>儲存
                     </button>
                 </div> -->
 
-            </form>
-        <?php else : ?>
-            筆電不存在
-        <?php endif; ?>
+                        </form>
+                    <?php else : ?>
+                        筆電不存在
+                    <?php endif; ?>
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
     </div>
-    <?php
-    $conn->close();
-    ?>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-secondary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <?php include "js.php"; ?>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
 </body>
+
+
+
+
+<?php
+$conn->close();
+?>
+
 
 </html>
