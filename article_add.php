@@ -354,7 +354,7 @@ session_start();
                                         <label for="article_images_thumbnail" class="form-label">文章縮圖</label>
                                         <input class="form-control" type="file" name="article_images_thumbnail" enctype="multipart/form-data">
                                     </div>
-                                    <div class="container mb-4">
+                                    <!-- <div class="container mb-4">
                                         <label for="article_images_title" class="form-label">文章圖片(標題)</label>
                                         <input class="form-control" type="file" name="article_images_title" enctype="multipart/form-data">
                                     </div>
@@ -387,7 +387,7 @@ session_start();
                                     <div class="container mb-4">
                                         <label for="article_images_content_3" class="form-label">文章內文圖片3</label>
                                         <input class="form-control" type="file" name="article_images_content_3" enctype="multipart/form-data">
-                                    </div>
+                                    </div> -->
                                     <div class="container mb-3">
                                         <label for="article_text">文章內容</label>
                                         <div>
