@@ -14,6 +14,9 @@ WHERE user_id = '$id' AND valid=1
 $sqlAddress = "SELECT * FROM addresses WHERE user_id='$id'";
 $Addressquery = $conn->query($sqlAddress);
 $AddressResult = $Addressquery->fetch_assoc();
+if ($Addressquery->num_rows == 0) {
+    $AddressResult = [];
+}
 
 $result = $conn->query($sql);
 $userCount = $result->num_rows;
@@ -22,9 +25,9 @@ $row = $result->fetch_assoc();
 if ($userCount > 0) {
     $title = $row["name"];
 
-    $sqlFavorite = "SELECT user_like.*, product.name AS product_name, product.id AS product_id
+    $sqlFavorite = "SELECT user_like.*, product.model AS product_name, product.product_id AS product_id
     FROM user_like
-    JOIN product ON user_like.product_id = product.id
+    JOIN product ON user_like.product_id = product.product_id
     WHERE user_like.user_id = $id
     ";
     $resultFavorite = $conn->query($sqlFavorite);
@@ -323,7 +326,11 @@ if ($userCount > 0) {
                                     </tr>
                                     <tr>
                                         <th>Address</th>
-                                        <td><?= $AddressResult["country"] . $AddressResult["city"] . $AddressResult["district"] . $AddressResult["remained_address"] ?></td>
+                                        <?php if ($AddressResult == null) : ?>
+                                            <td>尚未設定地址</td>
+                                        <?php else: ?>
+                                            <td><?= $AddressResult["country"] . $AddressResult["city"] . $AddressResult["district"] . $AddressResult["remained_address"] ?></td>
+                                        <?php endif; ?>
                                     </tr>
                                 </table>
                                 <div class="">

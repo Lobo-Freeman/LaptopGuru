@@ -55,7 +55,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fa-solid fa-user fa-fw fas"></i>
+                    <i class="fa-solid fa-user fa-fw fas"></i>
                     <span>Users</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -85,7 +85,7 @@
                 </div>
             </li>
 
-           
+
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -97,14 +97,14 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">租賃管理:</h6>
-                        <a class="collapse-item" href="login.html">租賃列表</a>
-                        <a class="collapse-item" href="register.html">新增可租賃筆電</a>
-                        <a class="collapse-item" href="forgot-password.html">已下架租賃列表</a>                        
+                        <a class="collapse-item" href="topics/rental_form.php">租賃列表</a>
+                        <a class="collapse-item" href="topics/laptop_create.php">新增可租賃筆電</a>
+                        <a class="collapse-item" href="topics/laptop_soft_delete_list.php">已下架租賃列表</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->           
+            <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCoupon"
                     aria-expanded="true" aria-controls="collapseCoupon">
@@ -115,7 +115,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">優惠券管理:</h6>
                         <a class="collapse-item" href="coupon-list.php">優惠券列表</a>
-                        <a class="collapse-item" href="coupon-list.php?p=1&order=1&valid=0">停用中優惠券</a>                        
+                        <a class="collapse-item" href="coupon-list.php?p=1&order=1&valid=0">停用中優惠券</a>
                         <a class="collapse-item" href="coupon-add.php">新增優惠券</a>
                     </div>
                 </div>
@@ -132,7 +132,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">文章管理:</h6>
                         <a class="collapse-item" href="article_manange.php">文章列表</a>
-                        <a class="collapse-item" href="article_add.php">新增文章</a>                                             
+                        <a class="collapse-item" href="article_add.php">新增文章</a>
                     </div>
                 </div>
             </li>
@@ -146,8 +146,8 @@
                 <div id="collapseEvent" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">活動管理:</h6>
-                        <a class="collapse-item" href=" ">活動列表</a>
-                        <a class="collapse-item" href="register.html">新增活動</a>                                             
+                        <a class="collapse-item" href="events.php">活動列表</a>
+                        <a class="collapse-item" href="create_event.php">新增活動</a>
                     </div>
                 </div>
             </li>
@@ -160,7 +160,7 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-            
+
 
         </ul>
         <!-- End of Sidebar -->
@@ -179,7 +179,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    
+
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -208,8 +208,8 @@
                             </div>
                         </li>
 
-                       
-                       
+
+
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -252,7 +252,7 @@
                 <!-- 主要頁面 -->
                 <div class="container-fluid">
 
-                    
+
 
                 </div>
                 <!-- /.container-fluid -->
