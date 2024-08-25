@@ -455,7 +455,13 @@ if (isset($_GET["min"]) && isset($_GET["max"])) {
                                         <td><?= $laptop["brand"] ?></td>
                                         <td><?= $laptop["price"] ?></td>
                                         <td><?= $laptop["num"] ?></td>
-                                        <td><?= $laptop["state"] ?></td>
+                                        <td>
+                                            <?php if ($laptop["state"] == "available") : ?>
+                                                <span class="badge badge-success">上架中</span>
+                                            <?php else : ?>
+                                                <span class="badge badge-danger">已下架</span>
+                                            <?php endif; ?>
+                                        </td>
                                         <td><?= $laptop["user_id"] ?></td>
                                         <td><?= $laptop["created_at"] ?></td>
                                         <td>
