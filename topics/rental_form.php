@@ -438,7 +438,7 @@ if (isset($_GET["min"]) && isset($_GET["max"])) {
                                     <th>圖片</th>
                                     <th>型號</th>
                                     <th>品牌</th>
-                                    <th>價格</th>
+                                    <th>價格/天</th>
                                     <th>數量</th>
                                     <th>狀態</th>
                                     <th>租借者數量</th>

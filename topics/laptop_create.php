@@ -295,7 +295,7 @@ $row = $result->fetch_assoc(); //一筆資料
                         </div>
 
                         <div class="mb-2">
-                            <label class="form-label" for="price">價格</label>
+                            <label class="form-label" for="price">價格/天</label>
                             <input class="form-control" type="text" name="price">
                         </div>
                         <div class="mb-2">

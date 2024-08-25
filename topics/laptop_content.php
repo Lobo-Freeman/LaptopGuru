@@ -304,7 +304,7 @@ if ($laptopCounts > 0) {
                                 <td><?= $row["brand"] ?></td>
                             </tr>
                             <tr>
-                                <td>價格</td>
+                                <td>價格/天</td>
                                 <td><?= $row["price"] ?></td>
                             </tr>
                             <tr>
