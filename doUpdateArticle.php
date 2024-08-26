@@ -192,6 +192,26 @@ foreach ($uploadKeys as $key) {
     handleFileUpload($key, $article_id, $conn);
 }
 
+$sqlArticle = "UPDATE article_management SET 
+    article_created_time = '$article_created_time',
+    article_brand = '$article_brand',
+    article_type1 = '$article_type1',
+    article_type2 = '$article_type2',
+    article_type3 = '$article_type3',
+    article_type4 = '$article_type4',
+    article_url_address = '$article_url_address',
+    article_introduction = '$article_introduction',
+    article_video_title_url = '$article_video_title_url',
+    article_text = '$article_text'
+    WHERE article_id = '$article_id'";
+
+if ($conn->query($sqlArticle) === TRUE) {
+    echo "更新成功";
+} else {
+    echo "更新資料錯誤: " . $conn->error;
+}
+
+
 header("location: article_edit.php?article_id=$article_id");
 // -----------------------------------------------------------------更改後的-----------------------------------------------------------------
 

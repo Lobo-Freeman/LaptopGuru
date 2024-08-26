@@ -412,7 +412,7 @@ if ($articleCount > 0) {
                                                     id=""
                                                     placeholder="<?= $rows["article_text"] ?>"
                                                     rows="10">
-                                </textarea>
+                                                </textarea>
                                             </td>
                                         </tr>
                                     </table>
