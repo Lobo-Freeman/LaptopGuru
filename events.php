@@ -338,7 +338,7 @@ $eventCount = $result->num_rows;
                             </a>
                         <?php endif; ?>
                         <a href="create_event.php" class="btn btn-outline-secondary">
-                            <i class="fa-solid fa-user-plus fa-fw"></i>
+                            <i class="fa-solid fa-calendar-plus"></i>
                             新增活動
                         </a>
                     </div>
