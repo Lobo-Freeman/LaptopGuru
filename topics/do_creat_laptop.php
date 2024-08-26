@@ -15,6 +15,26 @@ $num = $_POST["num"];
 $state=$_POST["state"];
 $created_at= date('Y-m-d H:i:s');
 
+$images = "";
+if (isset($_FILES["images"]) && $_FILES["images"]["error"] == 0) {
+    $target_dir = "../topics/image/";
+    $target_file = $target_dir . basename($_FILES["images"]["name"]);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+    // 檢查檔案大小和類型
+    if ($_FILES["images"]["size"] > 500000) {
+        echo "檔案太大.";
+        exit;
+    }
+    // 上傳檔案
+    if (move_uploaded_file($_FILES["images"]["tmp_name"], $target_file)) {
+        $images = basename($_FILES["images"]["name"]);
+    } else {
+        echo "檔案上傳錯誤.";
+        exit;
+    }
+}
+
 
 $sql = "INSERT INTO rental (model,images, brand, price, num, state, created_at)
 VALUES ('$model', '$images', '$brand', '$price', '$num', 'available', '$created_at');";

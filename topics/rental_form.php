@@ -438,7 +438,7 @@ if (isset($_GET["min"]) && isset($_GET["max"])) {
                                     <th>圖片</th>
                                     <th>型號</th>
                                     <th>品牌</th>
-                                    <th>價格</th>
+                                    <th>價格/天</th>
                                     <th>數量</th>
                                     <th>狀態</th>
                                     <th>租借者數量</th>
@@ -455,7 +455,13 @@ if (isset($_GET["min"]) && isset($_GET["max"])) {
                                         <td><?= $laptop["brand"] ?></td>
                                         <td><?= $laptop["price"] ?></td>
                                         <td><?= $laptop["num"] ?></td>
-                                        <td><?= $laptop["state"] ?></td>
+                                        <td>
+                                            <?php if ($laptop["state"] == "available") : ?>
+                                                <span class="badge badge-success">上架中</span>
+                                            <?php else : ?>
+                                                <span class="badge badge-danger">已下架</span>
+                                            <?php endif; ?>
+                                        </td>
                                         <td><?= $laptop["user_id"] ?></td>
                                         <td><?= $laptop["created_at"] ?></td>
                                         <td>

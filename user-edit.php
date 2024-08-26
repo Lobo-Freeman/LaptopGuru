@@ -326,6 +326,10 @@ if ($userCount > 0) {
                                                         <input class="form-check-input" type="radio" name="gender" id="female" value="female" <?php if ($user['gender'] == 'female') echo "checked" ?>>
                                                         <label class="form-check-label" for="female">female</label>
                                                     </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="gender" id="LGBTQ+" value="LGBTQ+" <?php if ($user['gender'] == 'LGBTQ+') echo "checked" ?>>
+                                                        <label class="form-check-label" for="LGBTQ+">LGBTQ+</label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </td>
