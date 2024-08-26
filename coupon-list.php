@@ -463,9 +463,9 @@ $rowsCount = $result->num_rows;
                                         <td><?php echo $row['coupon_end_time']; ?></td>
                                         <td>
                                             <?php if ($row['valid'] == 1): ?>
-                                                有效
+                                                <span class="badge badge-success">有效</span>
                                             <?php elseif ($row['valid'] == 0): ?>
-                                                停用
+                                                <span class="badge badge-danger">停用</span>
                                             <?php endif; ?>
                                         </td>
                                         <td class="text-center">
