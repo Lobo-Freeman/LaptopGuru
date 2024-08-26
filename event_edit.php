@@ -318,8 +318,10 @@ if ($eventCount > 0) {
                                     <input type="file" class="form-control" id="event_picture" name="event_picture" accept="image/*">
                                     <input type="hidden" name="original_event_picture" value="<?= $row['event_picture'] ?? '' ?>">
                                     <?php if (!empty($row["event_picture"])): ?>
-                                        <img class="img-fluid mt-2 image-preview" src="event_images/<?= $row['event_picture'] ?>" alt="Current Event Picture">
+                                        <img class="img-fluid mt-2 image-preview" id="image_preview" src="../event_images/<?= $row['event_picture'] ?>" alt="Current Event Picture">
                                         <p class="mt-1">當前圖片: <?= $row['event_picture'] ?></p>
+                                    <?php else: ?>
+                                        <img class="img-fluid mt-2 image-preview" id="image_preview" src="" alt="Event Picture Preview" style="display: none;">
                                     <?php endif; ?>
                                 </div>
 
@@ -471,6 +473,25 @@ if ($eventCount > 0) {
 
 
 <script>
+    //圖片預覽
+    document.getElementById('event_picture').addEventListener('change', function(event) {
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        var preview = document.getElementById('image_preview');
+
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+            preview.style.display = 'none';
+        }
+    });
+
     // 獲取時間輸入元素
     const applyStartTime = document.getElementById('apply_start_time');
     const applyEndTime = document.getElementById('apply_end_time');

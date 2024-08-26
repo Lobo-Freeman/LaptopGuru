@@ -288,6 +288,9 @@
                         <div class="mb-3">
                             <label class="form-label" for="event_picture">活動照片</label>
                             <input type="file" class="form-control" id="event_picture" name="event_picture" accept="image/*" required>
+                            <div id="image-preview" class="mt-2" style="display: none;">
+                                <img id="preview-image" src="#" alt="預覽圖片" style="max-width: 300px; max-height: 300px;">
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="apply_start_time">報名開始時間</label>
@@ -398,6 +401,27 @@
 
 
 <script>
+    // 圖片預覽功能
+    const eventPicture = document.getElementById('event_picture');
+    const imagePreview = document.getElementById('image-preview');
+    const previewImage = document.getElementById('preview-image');
+
+    eventPicture.addEventListener('change', function(event) {
+        if (event.target.files && event.target.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                previewImage.src = e.target.result;
+                imagePreview.style.display = 'block';
+            }
+
+            reader.readAsDataURL(event.target.files[0]);
+        } else {
+            imagePreview.style.display = 'none';
+        }
+    });
+
+    // 時間判斷 
     // 獲取時間輸入元素
     const applyStartTime = document.getElementById('apply_start_time');
     const applyEndTime = document.getElementById('apply_end_time');
