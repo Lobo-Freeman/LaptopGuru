@@ -274,7 +274,7 @@ $row = $result->fetch_assoc(); //一筆資料
                     </div>
 
 
-                    <form action="do_creat_laptop.php" method="post">
+                    <form action="do_creat_laptop.php" method="post" enctype="multipart/form-data">
                         <div class="mb-2">
                             <label class="form-label" for="model">型號</label>
                             <input class="form-control" type="text" name="model">

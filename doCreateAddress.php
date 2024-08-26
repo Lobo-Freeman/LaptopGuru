@@ -15,3 +15,6 @@ if($conn->query($sql) === TRUE){
 }else{
     echo '新增失敗';
 }
+
+header("Location: user.php?id=$id");
+

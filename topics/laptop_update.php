@@ -27,7 +27,8 @@ if (isset($_FILES["images"]) && $_FILES["images"]["error"] == 0) {
     $newFileName = time() . ".$extension";
     
     // 確保上傳目錄存在
-    $uploadDir = $_SERVER['DOCUMENT_ROOT'] . "/topics/image/";
+    // $uploadDir = $_SERVER['DOCUMENT_ROOT'] . "/topics/image/";
+    $uploadDir = "../topics/image/";
     
     // 移動上傳的文件到指定目錄
     if (move_uploaded_file($_FILES["images"]["tmp_name"], $uploadDir . $newFileName)) {
