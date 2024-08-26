@@ -14,6 +14,10 @@ $start_item = 0;
 if (isset($_GET["search"])) {
     $search = $_GET["search"];
     $sql = "SELECT * FROM events WHERE event_name LIKE '%$search%' AND valid = 1";
+
+    $countSql = "SELECT COUNT(*) as total FROM events WHERE event_name LIKE '%$search%' AND valid = 1";
+    $countResult = $conn->query($countSql);
+    $totalEventsFiltered = $countResult->fetch_assoc()['total'];
 } elseif (isset($_GET["p"]) && isset($_GET["order"])) {
     $page = $_GET["p"];
     $order = $_GET["order"];
@@ -67,6 +71,10 @@ if (isset($_GET["search"])) {
     header("Location: events.php?p=1&order=1");
     exit();
 }
+if (!isset($totalEventsFiltered)) {
+    $totalEventsFiltered = $totalEventsAll;
+}
+
 
 $result = $conn->query($sql);
 if (!$result) {
