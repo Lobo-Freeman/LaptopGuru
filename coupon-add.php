@@ -262,7 +262,7 @@ session_start();
                     <form action="doAddCoupon.php" method="post">
                         <div class="mb-3">
                             <label class="form-label" for="coupon_code">優惠券代碼</label>
-                            <input type="text" class="form-control" name="coupon_code" value="" id="coupon_code">
+                            <input type="text" class="form-control" name="coupon_code" value="" id="coupon_code" placeholder="必填">
                             <div>
                                 <small class="text-muted">請輸入6~20位數字或英文</small>
                             </div>
@@ -289,7 +289,7 @@ session_start();
                         </div>
                         <div class="mb-3">
                             <label for="coupon_discount">折扣範圍</label>
-                            <input type="text" class="form-control" name="coupon_discount">
+                            <input type="text" class="form-control" name="coupon_discount" placeholder="必填">
                             <div class="text-end" id="quantifier">%</div>
                         </div>
                         <div class="mb-3">

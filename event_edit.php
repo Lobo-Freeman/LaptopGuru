@@ -318,8 +318,10 @@ if ($eventCount > 0) {
                                     <input type="file" class="form-control" id="event_picture" name="event_picture" accept="image/*">
                                     <input type="hidden" name="original_event_picture" value="<?= $row['event_picture'] ?? '' ?>">
                                     <?php if (!empty($row["event_picture"])): ?>
-                                        <img class="img-fluid mt-2 image-preview" src="event_images/<?= $row['event_picture'] ?>" alt="Current Event Picture">
+                                        <img class="img-fluid mt-2 image-preview" id="image_preview" src="../event_images/<?= $row['event_picture'] ?>" alt="Current Event Picture">
                                         <p class="mt-1">當前圖片: <?= $row['event_picture'] ?></p>
+                                    <?php else: ?>
+                                        <img class="img-fluid mt-2 image-preview" id="image_preview" src="" alt="Event Picture Preview" style="display: none;">
                                     <?php endif; ?>
                                 </div>
 
@@ -431,6 +433,23 @@ if ($eventCount > 0) {
         </div>
     </div>
 
+    <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="alertModalLabel">警告</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="alertModalBody">
+                    <!-- 警告訊息將在這裡顯示 -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">確定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap core JavaScript-->
     <?php include "js.php"; ?>
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -453,11 +472,71 @@ if ($eventCount > 0) {
 
 
 
-
 <script>
-    flatpickr(".flatpickr", {
-        enableTime: true,
-        dateFormat: "Y-m-d H:i",
+    //圖片預覽
+    document.getElementById('event_picture').addEventListener('change', function(event) {
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        var preview = document.getElementById('image_preview');
+
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+            preview.style.display = 'none';
+        }
+    });
+
+    // 獲取時間輸入元素
+    const applyStartTime = document.getElementById('apply_start_time');
+    const applyEndTime = document.getElementById('apply_end_time');
+    const eventStartTime = document.getElementById('event_start_time');
+
+    const alertModal = new bootstrap.Modal(document.getElementById('alertModal'));
+    const alertModalBody = document.getElementById('alertModalBody');
+
+    // 顯示警告的函數
+    function showAlert(message) {
+        alertModalBody.textContent = message;
+        alertModal.show();
+    }
+
+    document.querySelector('#alertModal .btn-close').addEventListener('click', function() {
+        alertModal.hide();
+    });
+
+    // 為模態框的確定按鈕添加事件監聽器
+    document.querySelector('#alertModal .modal-footer .btn-secondary').addEventListener('click', function() {
+        alertModal.hide();
+    });
+
+    // 檢查報名結束時間
+    applyEndTime.addEventListener('change', function() {
+        if (applyStartTime.value && new Date(this.value) <= new Date(applyStartTime.value)) {
+            showAlert('報名結束時間不能早於或等於報名開始時間');
+            this.value = '';
+        }
+    });
+
+    // 檢查活動開始時間
+    eventStartTime.addEventListener('change', function() {
+        if (applyEndTime.value && new Date(this.value) <= new Date(applyEndTime.value)) {
+            showAlert('活動開始時間不能早於或等於報名結束時間');
+            this.value = '';
+        }
+    });
+
+    // 添加報名開始時間的檢查
+    applyStartTime.addEventListener('change', function() {
+        if (applyEndTime.value && new Date(applyEndTime.value) <= new Date(this.value)) {
+            showAlert('報名開始時間不能晚於或等於報名結束時間');
+            this.value = '';
+        }
     });
 </script>
 

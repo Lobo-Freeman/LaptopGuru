@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("db_connect.php");
 
 $sqlAll = "SELECT * FROM users WHERE valid=1 AND authority=10";
@@ -302,6 +303,7 @@ if (isset($_GET["search"])) {
 
                 <!-- 主要頁面 -->
                 <div class="container-fluid">
+                    <?php include("modal.php") ?>
                     <h1>使用者列表</h1>
                     <?php if (isset($_GET["search"])) : ?>
                         <a class="btn btn-outline-secondary mb-3" href="users.php" title="回使用者列表">
@@ -475,7 +477,23 @@ if (isset($_GET["search"])) {
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    
+    <script>
+        const infoModal = new bootstrap.Modal(document.getElementById('infoModal', {
+            keyboard: true
+        }));
+        const info = document.querySelector("#info");
+        const exampleModalLabel = document.querySelector("#exampleModalLabel");
+        
 
+        <?php if (isset($_SESSION['create'])) : ?>
+            info.innerHTML = "<?php echo $_SESSION['create']; ?>";
+
+            infoModal.show();
+            <?php unset($_SESSION['create']); ?>
+        <?php endif; ?>
+
+    </script>
 </body>
 
 

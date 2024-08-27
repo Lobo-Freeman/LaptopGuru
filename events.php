@@ -14,6 +14,10 @@ $start_item = 0;
 if (isset($_GET["search"])) {
     $search = $_GET["search"];
     $sql = "SELECT * FROM events WHERE event_name LIKE '%$search%' AND valid = 1";
+
+    $countSql = "SELECT COUNT(*) as total FROM events WHERE event_name LIKE '%$search%' AND valid = 1";
+    $countResult = $conn->query($countSql);
+    $totalEventsFiltered = $countResult->fetch_assoc()['total'];
 } elseif (isset($_GET["p"]) && isset($_GET["order"])) {
     $page = $_GET["p"];
     $order = $_GET["order"];
@@ -67,6 +71,10 @@ if (isset($_GET["search"])) {
     header("Location: events.php?p=1&order=1");
     exit();
 }
+if (!isset($totalEventsFiltered)) {
+    $totalEventsFiltered = $totalEventsAll;
+}
+
 
 $result = $conn->query($sql);
 if (!$result) {
@@ -330,7 +338,7 @@ $eventCount = $result->num_rows;
                             </a>
                         <?php endif; ?>
                         <a href="create_event.php" class="btn btn-outline-secondary">
-                            <i class="fa-solid fa-user-plus fa-fw"></i>
+                            <i class="fa-solid fa-calendar-plus"></i>
                             新增活動
                         </a>
                     </div>
@@ -426,11 +434,32 @@ $eventCount = $result->num_rows;
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
-                                    <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
+                                    <?php
+                                    $start = max(1, min($page - 2, $totalPage - 4));
+                                    $end = min($totalPage, max(5, $page + 2));
+
+                                    if ($start > 1) {
+                                        echo '<li class="page-item"><a class="page-link" href="events.php?p=1&order=' . $order . '&filter=' . htmlspecialchars($filter ?? '') . '">1</a></li>';
+                                        if ($start > 2) {
+                                            echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                                        }
+                                    }
+
+                                    for ($i = $start; $i <= $end; $i++) :
+                                    ?>
 
                                         <li class="page-item <?php if ($i == $page) echo 'active'; ?>"><a class="page-link" href="events.php?p=<?= $i ?>&order=<?= $order ?>&filter=<?php echo htmlspecialchars($filter ?? ''); ?>"><?= $i ?></a></li>
 
-                                    <?php endfor; ?>
+                                    <?php
+                                    endfor;
+
+                                    if ($end < $totalPage) {
+                                        if ($end < $totalPage - 1) {
+                                            echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                                        }
+                                        echo '<li class="page-item"><a class="page-link" href="events.php?p=' . $totalPage . '&order=' . $order . '&filter=' . htmlspecialchars($filter ?? '') . '">' . $totalPage . '</a></li>';
+                                    }
+                                    ?>
 
                                     <li class="page-item <?php if ($page >= $totalPage) echo 'disabled'; ?>">
                                         <a class="page-link" href="?p=<?php echo min($totalPage, $page + 1); ?>&order=<?php echo htmlspecialchars($order); ?>&filter=<?php echo htmlspecialchars($filter ?? ''); ?>" aria-label="Next">
