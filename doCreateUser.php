@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once("db_connect.php");
 $account = $_POST["account"];
 
@@ -51,7 +53,7 @@ $sql = "INSERT INTO users (authority, account, password, name, phone, email, cre
 
 if ($conn->query($sql) === TRUE) {
     $last_id = $conn->insert_id;
-    echo "新資料輸入成功, id 為 $last_id";
+    $_SESSION['create']= "新資料輸入成功, id 為 $last_id";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

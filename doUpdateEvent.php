@@ -25,7 +25,7 @@ if (isset($_FILES["event_picture"]) && $_FILES["event_picture"]["error"] == 0) {
     
     $newFileName = time() . ".$extension";
     
-    if (move_uploaded_file($_FILES["event_picture"]["tmp_name"], "../event_images/" . $newFileName)) {
+    if (move_uploaded_file($_FILES["event_picture"]["tmp_name"], "event_images/" . $newFileName)) {
         $event_picture = $newFileName;
     } else {
         die("上傳照片失敗");
